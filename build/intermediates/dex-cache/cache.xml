@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\android-support-v4.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e19387dc3b060af32f5401f84fbe246635256955">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\android-support-v4-defca4c0b81a6e8c0d252b47684e2a035c6961a9.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\universal-image-loader-1.8.6-with-sources.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9ad605dd55be2e74e614b2ab2ff466439c4461b7">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\universal-image-loader-1.8.6-with-sources-d4064ff278d552d548d72b4b104fc890de9ad1fd.jar" />
+    </item>
+
+</items>

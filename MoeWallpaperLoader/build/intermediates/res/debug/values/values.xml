@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/attrs.xml -->
+    <eat-comment/>
+    <attr format="color" name="color"/>
+    <attr format="reference" name="icon"/>
+    <attr format="string" name="text"/>
+    <attr format="dimension" name="text_size"/>
+    <declare-styleable name="ChangeColorIconView"><attr name="icon"/><attr name="color"/><attr name="text"/><attr name="text_size"/></declare-styleable>
+    <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="action_settings">Settings</string>
+    <string name="app_name">MoeWallpaperLoader</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="info">Preference</string>
+    <string name="player">Preview</string>
+    <string name="playlist">Download</string>
+    <string name="showlrc">Wallpaper</string>
+    <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="NotificationContent">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+    <style name="NotificationTitle">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="btn_custom_style">
+        <item name="android:layout_width">48dip</item>
+        <item name="android:layout_height">48dip</item>
+        <item name="android:layout_gravity">center|right</item>
+        <item name="android:background">?android:listChoiceBackgroundIndicator</item>
+    </style>
+</resources>

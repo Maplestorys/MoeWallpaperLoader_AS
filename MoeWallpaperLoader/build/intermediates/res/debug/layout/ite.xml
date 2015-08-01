@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal" >
+
+    <ImageView
+        android:id="@+id/b"
+        android:layout_width="92dp"
+        android:layout_height="82dp" />
+    
+    <ProgressBar
+        android:id="@+id/p1"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:layout_alignTop="@+id/b"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/p1"
+        android:layout_toRightOf="@+id/b"/>
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/b"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/p1"
+        android:layout_toRightOf="@+id/b"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
+<!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/layout/ite.xml -->

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MoeWallpaperLoader</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+	<string name="player">Preview</string>
+	<string name="playlist">Download</string>
+	<string name="showlrc">Wallpaper</string>
+	<string name="info">Preference</string>
+</resources>

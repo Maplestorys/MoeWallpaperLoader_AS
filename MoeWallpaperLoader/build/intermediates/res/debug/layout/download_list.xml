@@ -1,0 +1,22 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/tvlist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Download List"
+        android:gravity="center"
+        android:textSize="25dp" >
+    </TextView>
+
+    <ListView
+        android:id="@+id/listview1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/tvlist" >
+    </ListView>
+
+</RelativeLayout><!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/layout/download_list.xml -->

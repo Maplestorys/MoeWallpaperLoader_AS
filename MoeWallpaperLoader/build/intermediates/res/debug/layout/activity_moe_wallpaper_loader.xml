@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhy="http://schemas.android.com/apk/res/com.maplestory.moewallpaperloader"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+	<com.maplestory.moewallpaperloader.view.TitleView 
+    	android:layout_width="fill_parent"
+    	android:layout_height="40dip"
+    	android:layout_alignParentTop="true"
+    	android:id="@+id/title_view">
+	</com.maplestory.moewallpaperloader.view.TitleView>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/id_viewpager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+
+        android:layout_above="@+id/indicator"
+        android:layout_below="@id/title_view" >
+
+    </android.support.v4.view.ViewPager>
+  
+    <LinearLayout
+        android:id="@id/indicator"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
+        <com.maplestory.moewallpaperloader.view.ChangeColorIconWithTextView
+            android:id="@+id/id_indicator_one"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+
+            zhy:icon="@drawable/net"
+            zhy:text="在线预览"
+            zhy:text_size="14sp" />
+        <com.maplestory.moewallpaperloader.view.ChangeColorIconWithTextView
+            android:id="@+id/id_indicator_two"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+
+            zhy:icon="@drawable/local"
+            zhy:text="本地图库"
+            zhy:text_size="14sp" />
+
+        
+ 
+    </LinearLayout>
+
+
+  
+</RelativeLayout>
+    
+
+
+<!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/layout/activity_moe_wallpaper_loader.xml -->
