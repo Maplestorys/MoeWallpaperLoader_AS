@@ -5,8 +5,8 @@
     android:orientation="horizontal" >
     <ImageButton 
         android:id="@+id/preference_btn"
-        android:layout_width="40dip"
-        android:layout_height="40dip"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
         android:background="#e00096DB"
         android:src="@drawable/more_white"
         android:scaleType="fitXY"></ImageButton>"
@@ -14,20 +14,21 @@
     <EditText
         android:id="@+id/search_et"
         android:layout_width="wrap_content"
-        android:layout_height="40dip"
+        android:layout_height="50dip"
         android:layout_alignParentTop="true"
         android:background="#e00096DB"
         android:layout_toLeftOf="@+id/search_btn"
         android:layout_toRightOf="@+id/preference_btn"
         android:ems="10"
         android:hint="请输入搜索Tag..." 
-        android:textColorHint="#80ffffff">
+        android:textColorHint="#80ffffff"
+        android:singleLine="true">
     </EditText>
 
     <ImageButton
         android:id="@+id/search_btn"
-        android:layout_width="40dip"
-        android:layout_height="40dip"
+        android:layout_width="50dip"
+        android:layout_height="50dip"
         android:background="#e00096DB"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"

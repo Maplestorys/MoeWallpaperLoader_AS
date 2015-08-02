@@ -1,5 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/strings_activity_settings.xml -->
+    <eat-comment/>
+    <string-array name="pref_auto_change_wallpaper_time_list_titles">
+        <item>30分钟</item>
+        <item>1小时</item>
+        <item>2小时</item>
+        <item>8小时</item>
+        <item>24小时</item>
+    </string-array>
+    <string-array name="pref_auto_change_wallpaper_time_list_values">
+        <item>30</item>
+        <item>60</item>
+        <item>120</item>
+        <item>480</item>
+        <item>1440</item>
+    </string-array>
+    <string-array name="pref_filter_order_list_titles">
+        <item>None</item>
+        <item>Score</item>
+        <item>Favorite</item>
+        <item>Wide Screen First</item>
+    </string-array>
+    <string-array name="pref_filter_order_list_values">
+        <item/>
+        <item>order:score</item>
+        <item>order:fav</item>
+        <item>order:wide</item>
+    </string-array>
+    <string-array name="pref_filter_score_list_titles">
+        <item>None</item>
+        <item>0分以下</item>
+        <item>5分以下</item>
+        <item>10分以下</item>
+        <item>20分以下</item>
+    </string-array>
+    <string-array name="pref_filter_score_list_values">
+        <item/>
+        <item>score:0..</item>
+        <item>score:5..</item>
+        <item>score:10..</item>
+        <item>score:20..</item>
+    </string-array>
+    <string-array name="pref_filter_size_list_titles">
+        <item>None</item>
+        <item>854×480</item>
+        <item>1024×168</item>
+        <item>1280×720</item>
+        <item>1920×1080</item>
+    </string-array>
+    <string-array name="pref_filter_size_list_values">
+        <item/>
+        <item>width:854..+height:480..</item>
+        <item>width:1024..+height:768..</item>
+        <item>width:1280..+height:720..</item>
+        <item>width:1920..+height:1080..</item>
+    </string-array>
+    <string-array name="pref_site_list_titles">
+        <item>Konachan</item>
+        <item>Yande</item>
+    </string-array>
+    <string-array name="pref_site_list_values">
+        <item>http://konachan.com/post?</item>
+        <item>http://konachan.com/post?</item>
+    </string-array>
     <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/attrs.xml -->
     <eat-comment/>
     <attr format="color" name="color"/>
@@ -19,7 +83,23 @@
     <string name="info">Preference</string>
     <string name="player">Preview</string>
     <string name="playlist">Download</string>
+    <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/strings_activity_settings.xml -->
+    <eat-comment/>
+    <string name="pref_auto_change_wallpaper_check_title">启用自动更换壁纸功能</string>
+    <string name="pref_auto_change_wallpaper_timer_title">更换壁纸频率</string>
+    <string name="pref_auto_change_wallpaper_title">Change Wallpaper Automatically</string>
+    <string name="pref_explict_filter_title">Filtering explicit images</string>
+    <string name="pref_filter_score_title">按评分过滤图片</string>
+    <string name="pref_filter_size_title">按分辨率过滤图片</string>
+    <string name="pref_filter_sort_method_title">图片排序依据</string>
+    <string name="pref_filter_title">Filter</string>
+    <string name="pref_site_title">Site</string>
+    <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/strings.xml -->
+    <eat-comment/>
     <string name="showlrc">Wallpaper</string>
+    <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/strings_activity_settings.xml -->
+    <eat-comment/>
+    <string name="title_activity_settings">Settings</string>
     <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">

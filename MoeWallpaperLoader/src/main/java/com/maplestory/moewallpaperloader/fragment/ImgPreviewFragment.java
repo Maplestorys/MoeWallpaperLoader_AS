@@ -1,5 +1,6 @@
 package com.maplestory.moewallpaperloader.fragment;
 
+import android.preference.PreferenceManager;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import java.util.ArrayList;
@@ -71,6 +72,11 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 	private int maxPageNumber;
 	private boolean firstStart = true;
 	private Handler setPositionHandler;
+	private String filterSize;
+	private String filterScore;
+	private String filterSortMethod;
+	private String siteAddress;
+	private Boolean isFilterExplicit;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -85,6 +91,20 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 	@Override
 	public void onResume() {
 		super.onResume();
+		filterSize = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("filter_size_list","");
+		filterScore = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("filter_score_list","");
+		filterSortMethod = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("pref_filter_sort_method","");
+		siteAddress = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("image_site_list", "http://konachan.com/post?");
+		isFilterExplicit = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("explicit_image_filter", true);
+
+		System.out.println(filterSize+"        filter size");
+		System.out.println(filterScore+"    filter score");
+		System.out.println(filterSortMethod+"        filterSortMethod");
+		System.out.println(filterScore.equals("") +"filterscore empty");
+		System.out.println(siteAddress+"   siteAddress");
+		String  httpAddress = siteAddressGen.getsiteAddress(siteAddress,1,isFilterExplicit,"bikini",filterSize,filterScore,filterSortMethod);
+
+		System.out.println(httpAddress);
 		/**
 		 * 
 		 * 1.使用PullDownView 2.设置OnPullDownListener 3.从mPullDownView里面获取ListView
@@ -134,10 +154,10 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				});
 		// 加载数据 本类使用
 		if (firstLoad) {
-			loadData();
+			//loadData();
 			firstLoad = false;
 		}
-
+		loadData();
 		((MoeWallpaperLoader) getActivity()).setUIHandler(loadDataHandler);
 		setPositionHandler = new Handler(){
 			@Override
@@ -177,16 +197,18 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 					hasTags = false;
 				}
 				if (hasTags) {
-					String withTagsHtmlString = siteAddressGen.getSiteAddress(
-							currentPage, tags);
+				//	String withTagsHtmlString = siteAddressGen.getSiteAddress(currentPage, tags);
+				    String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress,currentPage,isFilterExplicit,tags,filterSize,filterScore,filterSortMethod);
 					System.out.println(withTagsHtmlString);
 					String htmlString = HttpUtils
 							.getContent(withTagsHtmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 				} else {
-					String htmlString = HttpUtils.getContent(siteAddressGen
-							.getSiteAddress(currentPage));
+				//	String htmlString = HttpUtils.getContent(siteAddressGen.getSiteAddress(currentPage));
+					String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,"", filterSize, filterScore, filterSortMethod);
+					System.out.println(withTagsHtmlString);
+					String htmlString = HttpUtils.getContent(withTagsHtmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 				}
@@ -231,16 +253,18 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 						hasTags = false;
 					}
 					if (hasTags) {
-						String withTagsHtmlString = siteAddressGen
-								.getSiteAddress(currentPage, tags);
+						//String withTagsHtmlString = siteAddressGen.getSiteAddress(currentPage, tags);
+						//System.out.println(withTagsHtmlString);
+						String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,tags, filterSize, filterScore, filterSortMethod);
 						System.out.println(withTagsHtmlString);
 						String htmlString = HttpUtils
 								.getContent(withTagsHtmlString);
 						al = HttpUtils.getNewImageValues(htmlString);
 
 					} else {
-						String htmlString = HttpUtils.getContent(siteAddressGen
-								.getSiteAddress(currentPage));
+						String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,"", filterSize, filterScore, filterSortMethod);
+						System.out.println(withTagsHtmlString);
+						String htmlString = HttpUtils.getContent(withTagsHtmlString);
 						al = HttpUtils.getNewImageValues(htmlString);
 					}
 					if (al.size() > 0) {
@@ -305,7 +329,6 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				break;
 			}
 			case WHAT_DID_MORE: {
-				System.out.println("hhhhhh");
 				if (msg.obj != null) {
 					List<String> strings = (List<String>) msg.obj;
 					if (!strings.isEmpty()) {
@@ -367,17 +390,15 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 						hasTags = false;
 					}
 					if (hasTags) {
-						String withTagsHtmlString = siteAddressGen
-								.getSiteAddress(currentPage, tags);
-						System.out.println("hastags" + withTagsHtmlString);
-						String htmlString = HttpUtils
-								.getContent(withTagsHtmlString);
+						String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit, tags, filterSize, filterScore, filterSortMethod);
+						System.out.println(withTagsHtmlString);
+						String htmlString = HttpUtils.getContent(withTagsHtmlString);
 						al = HttpUtils.getNewImageValues(htmlString);
 						maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 					} else {
-						String htmlString = HttpUtils.getContent(siteAddressGen
-								.getSiteAddress(currentPage));
-						System.out.println(htmlString);
+						String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,"", filterSize, filterScore, filterSortMethod);
+						System.out.println(withTagsHtmlString);
+						String htmlString = HttpUtils.getContent(withTagsHtmlString);
 						al = HttpUtils.getNewImageValues(htmlString);
 						maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 					}
@@ -423,18 +444,20 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				System.out.println(tags);
 				System.out.println(hasTags);
 				if (hasTags) {
-					String withTagsHtmlString = siteAddressGen.getSiteAddress(
-							currentPage, tags);
+					String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,tags, filterSize, filterScore, filterSortMethod);
 					System.out.println(withTagsHtmlString);
 					String htmlString = HttpUtils
 							.getContent(withTagsHtmlString);
+					System.out.println(htmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 					System.out.println(maxPageNumber);
 					System.out.println(al.size());
 				} else {
-					String htmlString = HttpUtils.getContent(siteAddressGen
-							.getSiteAddress(currentPage));
+					String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit, "", filterSize, filterScore, filterSortMethod);
+					System.out.println(withTagsHtmlString);
+					String htmlString = HttpUtils.getContent(withTagsHtmlString);
+					System.out.println(htmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 				}

@@ -30,6 +30,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -38,7 +39,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.support.v4.app.Fragment;  
+import android.preference.PreferenceManager;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;  
 import android.support.v4.app.FragmentPagerAdapter;  
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -67,9 +69,7 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 	private ViewPager mViewPager;  
     private List<Fragment> mTabs = new ArrayList<Fragment>();  
     private FragmentStatePagerAdapter mAdapter;  
-    private List<ChangeColorIconWithTextView> mTabIndicator = new ArrayList<ChangeColorIconWithTextView>();  
-    private ItemAdapter itemAdapter;
-    private Handler hd,fileHandler;
+    private List<ChangeColorIconWithTextView> mTabIndicator = new ArrayList<ChangeColorIconWithTextView>();
     private String IMAGE_PATH="/sdcard/WallpapersDownloader";
 	public NotificationManager mNotificationManager;
 	private TitleView titleView;
@@ -92,7 +92,7 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 	private void initService() {
 		mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 	}
-	
+	private Boolean isAutoChangeWallpaper;
 	private List<String> images = new ArrayList();
 	private List<String> imagePaths = new ArrayList();;
 	private int totalImage ;
@@ -158,12 +158,8 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
     	}else{
     		super.onCreate(savedInstanceState);  
     	}
-    	
-    	
-    	
-    	
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, 
-        	    WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_moe_wallpaper_loader);  
         mViewPager = (ViewPager) findViewById(R.id.id_viewpager);  
@@ -173,8 +169,6 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
         initStorageFolder();
         initService();
         initFile();
-        initButtonReceiver();
-        showButtonNotify();
         mViewPager.setAdapter(mAdapter);  
         mViewPager.setOnPageChangeListener(this);  
         titleView.setOnClickListener(new View.OnClickListener() {
@@ -192,6 +186,8 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 					break;
 				case(R.id.preference_btn):
 					System.out.println("config btn pressed");
+					Intent intent = new Intent(MoeWallpaperLoader.this,SettingsActivity.class);
+					startActivity(intent);
 					break;
 				}
 				
@@ -199,9 +195,22 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 		});
       
 
-    }  
-    
-    private void initDatas()  
+    }
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		isAutoChangeWallpaper = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("auto_change_wallpaper",false);
+		initButtonReceiver();
+		if(isAutoChangeWallpaper) {
+			showButtonNotify();
+		}else {
+			mNotificationManager.cancelAll();
+		}
+	}
+
+	private void initDatas()
     {  
   
         imgPreview = new ImgPreviewFragment();
@@ -330,7 +339,6 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
     
 	public void showButtonNotify(){
 		NotificationCompat.Builder mBuilder = new Builder(this);
-
 		RemoteViews mRemoteViews = new RemoteViews(getPackageName(), R.layout.view_custom_button);
 		Drawable dw = wallpaperManager.getDrawable();
 		BitmapDrawable bd = (BitmapDrawable) dw;
@@ -368,10 +376,7 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 		buttonIntent.putExtra(INTENT_BUTTONID_TAG, BUTTON_NEXT_ID);
 		PendingIntent intent_next = PendingIntent.getBroadcast(this, 3, buttonIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		mRemoteViews.setOnClickPendingIntent(R.id.btn_custom_next, intent_next);
-		
 
-		
-		
 		mBuilder.setContent(mRemoteViews)
 				.setContentIntent(getDefalutIntent(Notification.FLAG_ONGOING_EVENT))
 				.setWhen(System.currentTimeMillis())// 通知产生的时间，会在通知信息里显示
@@ -500,9 +505,6 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 		System.out.println("save activity state");
 		((UILApplication)getApplication()).setActivityBundle(outState);
 	}
-
-
-	
 
 	
 	

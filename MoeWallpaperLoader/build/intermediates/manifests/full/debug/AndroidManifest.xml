@@ -15,6 +15,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
 
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:name="com.maplestory.moewallpaperloader.UILApplication"
         android:allowBackup="true"
@@ -50,6 +52,10 @@
             <intent-filter>
                 <action android:name="android.intent.action.testactionmain" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.maplestory.moewallpaperloader.SettingsActivity"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 
