@@ -41,10 +41,10 @@ uses-permission#android.permission.SET_WALLPAPER
 ADDED from AndroidManifest.xml:16:5
 	android:name
 		ADDED from AndroidManifest.xml:16:22
-android:uses-permission#android.permission.READ_PHONE_STATE
+uses-permission#android.permission.READ_PHONE_STATE
 ADDED from AndroidManifest.xml:18:5
 	android:name
-		ADDED from AndroidManifest.xml:18:30
+		ADDED from AndroidManifest.xml:18:22
 application
 ADDED from AndroidManifest.xml:20:5
 	android:label

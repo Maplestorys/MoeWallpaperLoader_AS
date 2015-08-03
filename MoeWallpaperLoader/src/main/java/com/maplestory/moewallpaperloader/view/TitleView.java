@@ -42,6 +42,9 @@ public class TitleView extends RelativeLayout  {
 		configBtn.setOnClickListener(onClickListener);
 		searchBtn.setOnClickListener(onClickListener);
 	}
+	public void setOnKeyListener(OnKeyListener listener){
+		searchText.setOnKeyListener(listener);
+	}
 	
 	public String getEditTextValue() {
 		return searchText.getText().toString();

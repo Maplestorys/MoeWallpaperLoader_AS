@@ -53,6 +53,7 @@ import android.support.v4.app.NotificationCompat.Builder;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -100,7 +101,6 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 	private String tags="";
 	private Handler FragmentUIHandler = null;
 	private Handler imagePreviewHandler = null;
-	
 	public void setImagePreviewHandler(Handler handler)
 	{
 		this.imagePreviewHandler = handler;
@@ -172,29 +172,43 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
         mViewPager.setAdapter(mAdapter);  
         mViewPager.setOnPageChangeListener(this);  
         titleView.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
-				switch(arg0.getId()) {
-				case(R.id.search_btn):
-					System.out.println("search btn pressed");
-					tags = titleView.getEditTextValue();
-					Message msg= new Message();
-					FragmentUIHandler.sendMessage(msg);
-					((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(MoeWallpaperLoader.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);   
-					break;
-				case(R.id.preference_btn):
-					System.out.println("config btn pressed");
-					Intent intent = new Intent(MoeWallpaperLoader.this,SettingsActivity.class);
-					startActivity(intent);
-					break;
+				switch (arg0.getId()) {
+					case (R.id.search_btn):
+						System.out.println("search btn pressed");
+						tags = titleView.getEditTextValue();
+						Message msg = new Message();
+						FragmentUIHandler.sendMessage(msg);
+						((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(MoeWallpaperLoader.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+						break;
+					case (R.id.preference_btn):
+						System.out.println("config btn pressed");
+						Intent intent = new Intent(MoeWallpaperLoader.this, SettingsActivity.class);
+						startActivity(intent);
+						break;
 				}
-				
+
 			}
 		});
-      
-
+		View.OnKeyListener keyListener = new View.OnKeyListener() {
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				System.out.println("key press");
+				System.out.println(event.getAction());
+				System.out.println(keyCode);
+				if(keyCode==66){
+					tags = titleView.getEditTextValue();
+					Message msg = new Message();
+					FragmentUIHandler.sendMessage(msg);
+					((InputMethodManager) getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(MoeWallpaperLoader.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+				}
+				return false;
+			}
+		};
+		titleView.setOnKeyListener(keyListener);
     }
 
 	@Override
@@ -408,6 +422,9 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 	public final static int BUTTON_PALY_ID = 2;
 	/** 下一首 按钮点击 ID */
 	public final static int BUTTON_NEXT_ID = 3;
+
+
+
 	/**
 	 *	 广播监听按钮点击时间 
 	 */

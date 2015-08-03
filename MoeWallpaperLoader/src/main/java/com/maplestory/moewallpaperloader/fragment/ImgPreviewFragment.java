@@ -97,14 +97,6 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 		siteAddress = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("image_site_list", "http://konachan.com/post?");
 		isFilterExplicit = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("explicit_image_filter", true);
 
-		System.out.println(filterSize+"        filter size");
-		System.out.println(filterScore+"    filter score");
-		System.out.println(filterSortMethod+"        filterSortMethod");
-		System.out.println(filterScore.equals("") +"filterscore empty");
-		System.out.println(siteAddress+"   siteAddress");
-		String  httpAddress = siteAddressGen.getsiteAddress(siteAddress,1,isFilterExplicit,"bikini",filterSize,filterScore,filterSortMethod);
-
-		System.out.println(httpAddress);
 		/**
 		 * 
 		 * 1.使用PullDownView 2.设置OnPullDownListener 3.从mPullDownView里面获取ListView
@@ -130,7 +122,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 		mListView.setAdapter(mAdapter);
 		*/
 		mListView.setAdapter(itemListAdapter);
-		mPullDownView.enableAutoFetchMore(true, 1);
+		mPullDownView.enableAutoFetchMore(true,4);
 
 		// 隐藏 并禁用尾部
 		mPullDownView.setHideFooter();
@@ -154,26 +146,27 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				});
 		// 加载数据 本类使用
 		if (firstLoad) {
-			//loadData();
+			loadData();
 			firstLoad = false;
 		}
-		loadData();
+
 		((MoeWallpaperLoader) getActivity()).setUIHandler(loadDataHandler);
 		setPositionHandler = new Handler(){
 			@Override
 			public void handleMessage(Message msg) {
 				// TODO Auto-generated method stub
 				super.handleMessage(msg);
-				System.out.println("abcdefagaeafea");
 				SharedPreferences preferences = getActivity().getSharedPreferences(
 						"SCROLL", 0);
 				int scroll = preferences.getInt("ScrollValue", 0);
 				System.out.println("scroll...." + scroll);
-				if (scroll != 0) {
-					mListView.setSelection(scroll);
+				if (scroll >= mListView.getCount()-3) {
+					mListView.setSelection(scroll-2);
 					System.out.println("scroll  finsish ");
 
-				} 
+				} else {
+					mListView.setSelection(scroll);
+				}
 			}
 		};
 	}
@@ -354,19 +347,22 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		// position指的是第几个 ，从1开始计算
-		Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
-		// System.out.println(imageValueStrings.get(position-1).getJpeg_url());
-		ViewHolder holder = (ViewHolder) view.getTag();
-		// System.out.println(holder.text.getText().toString());
-		Bundle bundle = new Bundle();
-		bundle.putSerializable("imageObject",
-				imageValueStrings.get(position - 1));
-		Intent intent = new Intent();
-		intent.setClass(getActivity(), MainActivity.class);
-		intent.putExtras(bundle);
-		getActivity().startActivity(intent);
-		System.out.println("jump_____________");
-
+		System.out.println(position);
+		System.out.println(itemListAdapter.getCount());
+		if(itemListAdapter.getCount()>0&&position<=itemListAdapter.getCount()){
+			Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
+			// System.out.println(imageValueStrings.get(position-1).getJpeg_url());
+			ViewHolder holder = (ViewHolder) view.getTag();
+			// System.out.println(holder.text.getText().toString());
+			Bundle bundle = new Bundle();
+			bundle.putSerializable("imageObject",
+					imageValueStrings.get(position - 1));
+			Intent intent = new Intent();
+			intent.setClass(getActivity(), MainActivity.class);
+			intent.putExtras(bundle);
+			getActivity().startActivity(intent);
+			System.out.println("jump_____________");
+		}
 	}
 
 	Handler loadDataHandler = new Handler() {
@@ -432,7 +428,6 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 			public void run() {
 				currentPage = 1;
 				List<String> strings = new ArrayList<String>();
-				;
 				ArrayList<ImageProfile> al;
 				tags = ((MoeWallpaperLoader) getActivity()).getTags();
 				System.out.println(tags);
@@ -444,11 +439,10 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				System.out.println(tags);
 				System.out.println(hasTags);
 				if (hasTags) {
-					String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,tags, filterSize, filterScore, filterSortMethod);
+					String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit, tags, filterSize, filterScore, filterSortMethod);
 					System.out.println(withTagsHtmlString);
 					String htmlString = HttpUtils
 							.getContent(withTagsHtmlString);
-					System.out.println(htmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 					System.out.println(maxPageNumber);
@@ -457,7 +451,6 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 					String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit, "", filterSize, filterScore, filterSortMethod);
 					System.out.println(withTagsHtmlString);
 					String htmlString = HttpUtils.getContent(withTagsHtmlString);
-					System.out.println(htmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 				}
@@ -566,6 +559,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				holder = (ViewHolder) convertView.getTag();
 			}
 			holder.text.setText("" + imageValueStrings.get(position).getId());
+			System.out.println("loading image at the position  " + position);
 			imageLoader
 					.displayImage(imageUrls[position], holder.image, options);
 			return convertView;
