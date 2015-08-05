@@ -3,7 +3,8 @@
     <CheckBoxPreference
         android:key="auto_change_wallpaper"
         android:title="@string/pref_auto_change_wallpaper_check_title"
-        android:defaultValue="false" />
+        android:defaultValue="false"
+        android:enabled="false"/>
     <ListPreference
         android:dependency="auto_change_wallpaper"
         android:key="auto_change_time"
