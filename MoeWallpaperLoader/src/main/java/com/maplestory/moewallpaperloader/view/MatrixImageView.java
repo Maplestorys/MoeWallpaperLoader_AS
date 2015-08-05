@@ -336,9 +336,6 @@ public class MatrixImageView extends ImageView{
         @Override
         public boolean onSingleTapConfirmed(MotionEvent e) {
             // TODO Auto-generated method stub
-        	System.out.println("single tap comfirmed");
-        	Message msg = new Message();
-        	updateOuterUI.sendMessage(msg);
             return super.onSingleTapConfirmed(e);
         }
 

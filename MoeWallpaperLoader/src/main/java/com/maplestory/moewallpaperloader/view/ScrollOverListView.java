@@ -1031,4 +1031,9 @@ public class ScrollOverListView extends ListView implements OnScrollListener {
 
  }
 
+
+ @Override
+ public boolean onInterceptTouchEvent(MotionEvent ev) {
+  return false;
+ }
 }

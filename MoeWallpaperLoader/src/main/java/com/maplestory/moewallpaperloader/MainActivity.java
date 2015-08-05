@@ -158,7 +158,6 @@ public class MainActivity extends Activity  {
 		        request.setDestinationInExternalPublicDir("/WallpapersDownloader/"  , ipTest.getId()+".jpg" );
 		        request.allowScanningByMediaScanner() ; 
 		        request.setVisibleInDownloadsUi( true ) ;
-		        
 		        downloadManager = (DownloadManager)getSystemService(DOWNLOAD_SERVICE) ;
 		        mReference = downloadManager.enqueue( request ) ;
 					break;

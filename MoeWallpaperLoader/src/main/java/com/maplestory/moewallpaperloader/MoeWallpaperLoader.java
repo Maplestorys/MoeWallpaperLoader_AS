@@ -111,7 +111,7 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 	public String getTags(){
 		return this.tags;
 	}
-	
+	public void setTags(String tags){this.tags = tags;}
     private void initFile(){
 		 File f = new File(IMAGE_PATH);  
          File[] files = f.listFiles();

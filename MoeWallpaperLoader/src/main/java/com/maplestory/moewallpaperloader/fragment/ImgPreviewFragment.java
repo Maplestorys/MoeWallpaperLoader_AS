@@ -1,8 +1,16 @@
 package com.maplestory.moewallpaperloader.fragment;
 
+import android.app.DownloadManager;
+import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.view.KeyEvent;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.webkit.MimeTypeMap;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import com.maplestory.moewallpaperloader.MainActivity;
@@ -29,12 +37,16 @@ import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.maplestory.moewallpaperloader.R;
+import com.maplestory.moewallpaperloader.view.MatrixImageView;
 import com.maplestory.moewallpaperloader.view.PullDownView;
 import com.maplestory.moewallpaperloader.view.PullDownView.OnPullDownListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -47,7 +59,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 	public ImgPreviewFragment() {
 		// TODO Auto-generated constructor stub
 	}
-
+	private String IMAGE_PATH="/sdcard/WallpapersDownloader";
 	private Parcelable listState = null;
 	private ItemListAdapter itemListAdapter;
 	private DisplayImageOptions options;
@@ -347,7 +359,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		// position指的是第几个 ，从1开始计算
-		System.out.println(position);
+		/*System.out.println(position);
 		System.out.println(itemListAdapter.getCount());
 		if(itemListAdapter.getCount()>0&&position<=itemListAdapter.getCount()){
 			Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
@@ -362,7 +374,8 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 			intent.putExtras(bundle);
 			getActivity().startActivity(intent);
 			System.out.println("jump_____________");
-		}
+		}*/
+
 	}
 
 	Handler loadDataHandler = new Handler() {
@@ -377,7 +390,6 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 					// TODO Auto-generated method stub
 					currentPage = 1;
 					List<String> strings = new ArrayList<String>();
-					;
 					ArrayList<ImageProfile> al;
 					tags = ((MoeWallpaperLoader) getActivity()).getTags();
 					if (tags != null && tags != "") {
@@ -536,7 +548,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 
 		public String getCurrentString(View convertView) {
 			ViewHolder holder = (ViewHolder) convertView.getTag();
-			return holder.text.getText().toString();
+			return holder.tvId.getText().toString();
 		}
 
 		public Drawable getCurrentBackground(View convertView) {
@@ -545,23 +557,102 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 		}
 
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
+		public View getView(final int position,  View convertView, ViewGroup parent) {
+			final RotateAnimation a =  new RotateAnimation(0f,180f,Animation.RELATIVE_TO_SELF,
+					0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+			final RotateAnimation b =  new RotateAnimation(180f,360f,Animation.RELATIVE_TO_SELF,
+					0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+			a.setDuration(200);
+			a.setFillAfter(true);
+			b.setDuration(200);
+			b.setFillAfter(true);
+
 			ViewHolder holder = null;
+			System.out.println(position + "    position imagess------");
 			if (convertView == null) {
 				convertView = getActivity().getLayoutInflater().inflate(
 						R.layout.item_list, parent, false);
 				holder = new ViewHolder();
-				holder.text = (TextView) convertView.findViewById(R.id.text);
+				holder.tvId = (TextView) convertView.findViewById(R.id.tv_id_view);
 				holder.image = (ImageView) convertView.findViewById(R.id.image);
+				holder.tvScore = (TextView) convertView.findViewById(R.id.tv_score_view);
+				holder.tvResolution = (TextView) convertView.findViewById(R.id.tv_resolution_view);
+				holder.lvTags = (ListView) convertView.findViewById(R.id.tags_list_view);
 				convertView.setTag(holder);
+
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			holder.text.setText("" + imageValueStrings.get(position).getId());
-			System.out.println("loading image at the position  " + position);
-			imageLoader
-					.displayImage(imageUrls[position], holder.image, options);
+			final ImageView imageView = holder.image;
+			View.OnClickListener l = new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					switch (v.getId()){
+						case R.id.btn_download_view:
+							ImageProfile ip = imageValueStrings.get(position);
+							if(searchFile(ip.getId()+"")){
+								System.out.println("file is exist");
+								Toast.makeText(getActivity(),"图像已存在",Toast.LENGTH_SHORT).show();
+							}else {
+								DownloadManager.Request request = new DownloadManager.Request( Uri.parse(ip.getSample_url()) );
+								MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+								request.setMimeType(mimeTypeMap.getMimeTypeFromExtension(ip.getSample_url()));
+								request.setDestinationInExternalPublicDir("/WallpapersDownloader/", ip.getId() + ".jpg");
+								request.allowScanningByMediaScanner() ;
+								request.setVisibleInDownloadsUi(true) ;
+								DownloadManager downloadManager = (DownloadManager) getActivity().getSystemService(getActivity().DOWNLOAD_SERVICE) ;
+								downloadManager.enqueue( request ) ;
+								Toast.makeText(getActivity(),"开始下载",Toast.LENGTH_SHORT).show();
+								System.out.println("download image with id:" + imageValueStrings.get(position).getId());
+							}
+
+							break;
+						case R.id.btn_share_view:
+							System.out.println("share image with id:" + imageValueStrings.get(position).getId());
+							break;
+						case R.id.btn_refresh_view:
+							imageLoader.displayImage(imageUrls[position], imageView, options);
+							System.out.println("refresh image with id:" + imageValueStrings.get(position).getId());
+							Toast.makeText(getActivity(), "开始刷新", Toast.LENGTH_SHORT);
+							break;
+
+					}
+				}
+			};
+			convertView.findViewById(R.id.btn_download_view).setOnClickListener(l);
+			convertView.findViewById(R.id.btn_share_view).setOnClickListener(l);
+			convertView.findViewById(R.id.btn_refresh_view).setOnClickListener(l);
+			holder.lvTags.setOnItemClickListener(new OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int innerPosition, long id) {
+					String selectedTag = imageValueStrings.get(position).getTags().get(innerPosition);
+					((MoeWallpaperLoader) getActivity()).setTags(selectedTag);
+					loadDataHandler.sendEmptyMessage(0);
+					System.out.println(selectedTag);
+				}
+			});
+			final LinearLayout imageDetails = (LinearLayout)convertView.findViewById(R.id.tag_details);
+			final ImageButton btnActionDetail = (ImageButton) convertView.findViewById(R.id.btn_more_detail_view);
+			convertView.findViewById(R.id.btn_more_detail_view).setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+
+					if(imageDetails.getVisibility()==View.GONE){
+						imageDetails.setVisibility(View.VISIBLE);
+						btnActionDetail.startAnimation(a);
+					}else {
+						imageDetails.setVisibility(View.GONE);
+						btnActionDetail.startAnimation(b);
+					}
+					System.out.println("see detail of image with id:" + imageValueStrings.get(position).getId());
+
+				}
+			});
+			holder.tvId.setText("" + imageValueStrings.get(position).getId());
+			imageLoader.displayImage(imageUrls[position], holder.image, options);
+			holder.tvResolution.setText("" + imageValueStrings.get(position).getJpeg_width() + "×" + imageValueStrings.get(position).getJpeg_height());
+			holder.tvScore.setText(imageValueStrings.get(position).getScore() + "");
+			holder.lvTags.setAdapter(new ArrayAdapter<String>(getActivity(),R.layout.single_tag_view,imageValueStrings.get(position).getTags()));
 			return convertView;
 		}
 
@@ -573,11 +664,41 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 
 		class ViewHolder {
 			public ImageView image;
-			public TextView text;
+			public TextView tvId;
+			public TextView tvScore;
+			public TextView tvResolution;
+			public ListView lvTags;
 		}
 	}
 
 	public interface searchCallback {
 		public void search();
+	}
+
+	private boolean searchFile(String imageID){
+
+		File f = new File(IMAGE_PATH);
+		File[] files = f.listFiles();
+		if(files != null){
+			int count = files.length;// 文件个数
+			for (int i = 0; i < count; i++) {
+				File file = files[i];
+				if(getFileNameNoEx(file.getName()).equals(imageID)){
+					return true;
+				}
+			}
+
+		}
+		return false;
+	}
+
+	public static String getFileNameNoEx(String filename) {
+		if ((filename != null) && (filename.length() > 0)) {
+			int dot = filename.lastIndexOf('.');
+			if ((dot >-1) && (dot < (filename.length()))) {
+				return filename.substring(0, dot);
+			}
+		}
+		return filename;
 	}
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:text="hatsune_miku"
+        android:gravity="center_vertical"
+        android:layout_height="25dp"
+        android:id="@+id/tv_single_tag_view"
+        android:textSize="18dp"
+         />
+

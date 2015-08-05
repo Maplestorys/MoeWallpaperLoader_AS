@@ -258,6 +258,6 @@ public class WallpaperSelectFragment extends Fragment{
 	         }  
 	    }
 
-	    
+
 	    
 }
