@@ -33,8 +33,11 @@
         <item>Favorite</item>
         <item>Wide Screen First</item>
     </string-array><string name="pref_auto_change_wallpaper_check_title">启用自动更换壁纸功能</string><string-array name="pref_site_list_titles">
-        <item>Konachan</item>
-        <item>Yande</item>
+        <item>Konachan0</item>
+        <item>Konachan1</item>
+        <item>Konachan2</item>
+        <item>Konachan3</item>
+        <item>Konachan4</item>
     </string-array><string name="pref_filter_sort_method_title">图片排序依据</string><string name="pref_explict_filter_title">Filtering explicit images</string><string name="pref_filter_size_title">按分辨率过滤图片</string><string-array name="pref_filter_score_list_values">
         <item/>
         <item>score:0..</item>
@@ -54,6 +57,9 @@
         <item>8小时</item>
         <item>24小时</item>
     </string-array><string-array name="pref_site_list_values">
+        <item>http://konachan.com/post?</item>
+        <item>http://konachan.com/post?</item>
+        <item>http://konachan.com/post?</item>
         <item>http://konachan.com/post?</item>
         <item>http://konachan.com/post?</item>
     </string-array></file><file path="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\src\main\res\values\styles.xml" qualifiers=""><style name="AppTheme" parent="AppBaseTheme">
