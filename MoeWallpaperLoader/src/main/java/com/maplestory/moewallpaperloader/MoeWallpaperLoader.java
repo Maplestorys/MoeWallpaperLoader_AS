@@ -12,6 +12,7 @@ import com.maplestory.moewallpaperloader.view.TitleView;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.sql.SQLOutput;
 import java.text.DateFormat.Field;
 import java.util.ArrayList;
 import java.util.List;
@@ -129,7 +130,7 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
              totalImage = imagePaths.size();
              
          }  
-    }
+	}
     
     public static String getExtensionName(String filename) {    
         if ((filename != null) && (filename.length() > 0)) {    
@@ -214,7 +215,7 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 	@Override
 	protected void onResume() {
 		super.onResume();
-
+		System.out.println("activity resume");
 		isAutoChangeWallpaper = PreferenceManager.getDefaultSharedPreferences(this).getBoolean("auto_change_wallpaper",false);
 		initButtonReceiver();
 		if(isAutoChangeWallpaper) {
@@ -400,9 +401,6 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 				.setSmallIcon(R.drawable.pic_image);
 		Notification notify = mBuilder.build();
 		notify.flags = Notification.FLAG_ONGOING_EVENT;
-		//会报错，还在找解决思路
-//		notify.contentView = mRemoteViews;
-//		notify.contentIntent = PendingIntent.getActivity(this, 0, new Intent(), 0);
 		mNotificationManager.notify(200, notify);
 		System.out.println("=========================================...");
 	}
@@ -520,10 +518,8 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
 		System.out.println("save activity state");
-		((UILApplication)getApplication()).setActivityBundle(outState);
+
 	}
 
-	
-	
-	
+
 }

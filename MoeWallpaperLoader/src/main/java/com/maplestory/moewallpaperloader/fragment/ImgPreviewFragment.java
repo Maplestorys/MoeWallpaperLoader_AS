@@ -109,6 +109,15 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 		siteAddress = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("image_site_list", "http://konachan.com/post?");
 		isFilterExplicit = PreferenceManager.getDefaultSharedPreferences(getActivity()).getBoolean("explicit_image_filter", true);
 
+
+		if (!firstStart) {
+			setPositionHandler.sendEmptyMessage(0);
+		}else {
+			firstStart =false;
+		}
+
+
+		System.out.println("fragment resume");
 		/**
 		 * 
 		 * 1.使用PullDownView 2.设置OnPullDownListener 3.从mPullDownView里面获取ListView
@@ -485,6 +494,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 
 
 
+
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		// TODO Auto-generated method stub
@@ -518,13 +528,17 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 		// TODO Auto-generated method stub
 		super.onStart();
 		System.out.println("fragment on start......");
-		if (!firstStart) {
-			setPositionHandler.sendEmptyMessage(0);
-		}else {
-			firstStart =false;
-		}
+
 
 	}
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		System.out.println("pause");
+	}
+
+
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -609,11 +623,17 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 							break;
 						case R.id.btn_share_view:
 							System.out.println("share image with id:" + imageValueStrings.get(position).getId());
+							Intent intent=new Intent(Intent.ACTION_SEND);
+							intent.setType("text/plain");
+							intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
+							intent.putExtra(Intent.EXTRA_TEXT, imageValueStrings.get(position).getFile_url());
+							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							startActivity(Intent.createChooser(intent, getActivity().getTitle()));
 							break;
 						case R.id.btn_refresh_view:
 							imageLoader.displayImage(imageUrls[position], imageView, options);
 							System.out.println("refresh image with id:" + imageValueStrings.get(position).getId());
-							Toast.makeText(getActivity(), "开始刷新", Toast.LENGTH_SHORT);
+							Toast.makeText(getActivity(), "开始刷新", Toast.LENGTH_SHORT).show();
 							break;
 
 					}
@@ -701,4 +721,4 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 		}
 		return filename;
 	}
-}
+	}
