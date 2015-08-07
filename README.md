@@ -11,7 +11,7 @@ https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/MoeWallpaperLoa
 <font face="times new roman" size="26"  color="black">expandable tag list </font><br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/expandable%20tag%20list.png)<br>
 <font face="times new roman" size="26"  color="black">image searching with tags</font><br>
-![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/expandable%20tag%20list.png)<br>
+![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/image%20searching.png)<br>
 <font face="times new roman" size="26"  color="black">image filter</font><br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/image%20fliter.png)<br>
  <font face="times new roman" size="26"  color="black">local image selector</font><br>
