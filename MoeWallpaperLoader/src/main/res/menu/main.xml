@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:title="设为壁纸"
+		  android:id="@+id/set_wallpaper" />
+
+	<item android:title="删除图片"
+		  android:id="@+id/delete_images" />
+
+	<item android:title="裁剪图片"
+		  android:id="@+id/resize_image" />
+
+	<item android:title="分享图片"
+		android:id="@+id/share_image" />
+</menu>

@@ -1,13 +1,12 @@
 package com.maplestory.moewallpaperloader.fragment;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.maplestory.moewallpaperloader.MoeWallpaperLoader;
+import com.maplestory.moewallpaperloader.view.PopupMenuCompat;
 import com.maplestory.moewallpaperloader.R;
-import com.maplestory.moewallpaperloader.utils.Item;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -23,11 +22,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -35,7 +37,6 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
 public class WallpaperSelectFragment extends Fragment{
@@ -91,63 +92,129 @@ public class WallpaperSelectFragment extends Fragment{
 					final int position, long id) {
 				// TODO Auto-generated method stub
 				System.out.println("on long click");
-				new AlertDialog.Builder(getActivity()) 
+/*				new AlertDialog.Builder(getActivity())
 				.setTitle("确认删除图片")
 				.setMessage("是否删除该图片")
 				.setPositiveButton("是", new DialogInterface.OnClickListener(){
 					@Override
 					public void onClick(DialogInterface arg0,int arg1) {
 						File deleteImage = new File(imagePaths.get(position));
-						deleteImage.delete();  
+						deleteImage.delete();
 						fileHandler.sendEmptyMessage(0);
-						Toast.makeText(getActivity(), "删除成功", Toast.LENGTH_SHORT).show();  
+						Toast.makeText(getActivity(), "删除成功", Toast.LENGTH_SHORT).show();
 				}
 				})
 				.setNegativeButton("否", null)
-				.show();
+				.show();*/
 				return true;
 			}
 		});
 		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view,final int position, long id) {
 				
-				final WallpaperManager wallpaperManager = WallpaperManager.getInstance(getActivity());  
+/*				final WallpaperManager wallpaperManager = WallpaperManager.getInstance(getActivity());
 				Drawable wallpaperDrawable = wallpaperManager.getDrawable();
 				final Bitmap previousWallpaper = ((BitmapDrawable) wallpaperDrawable).getBitmap();
-				Bitmap nextWallpaper = BitmapFactory.decodeFile(imagePaths.get(position)); 
+				Bitmap nextWallpaper = BitmapFactory.decodeFile(imagePaths.get(position));
 
 				try {
 					wallpaperManager.setBitmap(nextWallpaper);
-					Toast.makeText(getActivity(), "设置成功", Toast.LENGTH_SHORT).show(); 
-					
-					new AlertDialog.Builder(getActivity()) 
-					.setTitle("确认")
-					.setMessage("返回原有壁纸")
-					.setPositiveButton("是", new DialogInterface.OnClickListener(){
-						@Override
-						public void onClick(DialogInterface arg0,int arg1) {
-							// TODO Auto-generated method stub
-							try {
-								wallpaperManager.setBitmap(previousWallpaper);
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}  
-							Toast.makeText(getActivity(), "返回原有壁纸", Toast.LENGTH_SHORT).show();  
-					}
-					})
-					.setNegativeButton("否", null)
+					Toast.makeText(getActivity(), "设置成功", Toast.LENGTH_SHORT).show();
 
-					.show();
-					
+					new AlertDialog.Builder(getActivity())
+							.setTitle("确认")
+							.setMessage("返回原有壁纸")
+							.setPositiveButton("是", new DialogInterface.OnClickListener(){
+								@Override
+								public void onClick(DialogInterface arg0,int arg1) {
+									// TODO Auto-generated method stub
+									try {
+										wallpaperManager.setBitmap(previousWallpaper);
+									} catch (IOException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+									Toast.makeText(getActivity(), "返回原有壁纸", Toast.LENGTH_SHORT).show();
+								}
+							})
+							.setNegativeButton("否", null)
+
+							.show();
+
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}   
+				}*/
 
-				
+				PopupMenuCompat menu = PopupMenuCompat.newInstance( getActivity(), view );
+				menu.inflate( R.menu.main );
+				menu.setOnMenuItemClickListener( new PopupMenuCompat.OnMenuItemClickListener()
+				{
+
+					Uri uri = Uri.parse(images.get(position));
+					@Override
+					public boolean onMenuItemClick( MenuItem item )
+					{
+						System.out.println(images.get(position));
+						switch (item.getItemId()){
+							case(R.id.set_wallpaper):
+								final WallpaperManager wallpaperManager = WallpaperManager.getInstance(getActivity());
+								Drawable wallpaperDrawable = wallpaperManager.getDrawable();
+								Bitmap nextWallpaper = BitmapFactory.decodeFile(imagePaths.get(position));
+								try {
+									wallpaperManager.setBitmap(nextWallpaper);
+									Toast.makeText(getActivity(), "设置成功", Toast.LENGTH_SHORT).show();}
+								catch (IOException e){
+									e.printStackTrace();
+								}
+								break;
+							case (R.id.delete_images):
+								new AlertDialog.Builder(getActivity())
+										.setTitle("确认删除图片")
+										.setMessage("是否删除该图片")
+										.setPositiveButton("是", new DialogInterface.OnClickListener(){
+											@Override
+											public void onClick(DialogInterface arg0,int arg1) {
+												File deleteImage = new File(imagePaths.get(position));
+												deleteImage.delete();
+												fileHandler.sendEmptyMessage(0);
+												Toast.makeText(getActivity(), "删除成功", Toast.LENGTH_SHORT).show();
+											}
+										})
+										.setNegativeButton("否", null)
+										.show();
+
+								break;
+							case(R.id.share_image):
+								String path = imagePaths.get(position);
+								System.out.println("share image ....." + path);
+								Intent intent=new Intent(Intent.ACTION_SEND);
+								if(path == null || path.equals("")){
+									intent.setType("text/plain");
+								} else {
+									File f = new File(path);
+									if((f != null)&&(f.exists())&&(f.isFile())){
+										intent.setType("image/jpeg");
+										Uri u = Uri.fromFile(f);
+										intent.putExtra(Intent.EXTRA_STREAM,u);
+									}
+								}
+								intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
+								intent.putExtra(Intent.EXTRA_TEXT,"Share Images");
+								intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+								startActivity(Intent.createChooser(intent, getActivity().getTitle()));
+								break;
+							case(R.id.resize_image):
+								cropImageUri(uri,1);
+								break;
+						}
+						return true;
+					}
+				} );
+
+				menu.show();
 				
 				
 				
@@ -225,17 +292,7 @@ public class WallpaperSelectFragment extends Fragment{
 	        return filename;    
 	    }    
 	    
-	    
-	    public static String getFileNameNoEx(String filename) {    
-	        if ((filename != null) && (filename.length() > 0)) {    
-	            int dot = filename.lastIndexOf('.');    
-	            if ((dot >-1) && (dot < (filename.length()))) {    
-	                return filename.substring(0, dot);    
-	            }    
-	        }    
-	        return filename;    
-	    }    
-		
+
 	    
 	    private void initFile(){
 	    	 images.clear();
@@ -258,6 +315,26 @@ public class WallpaperSelectFragment extends Fragment{
 	         }  
 	    }
 
+	private void cropImageUri(Uri uri, int requestCode){
+		Intent intent = new Intent("com.android.camera.action.CROP");
+		intent.setDataAndType(uri, "image/*");
+		intent.putExtra("crop", "true");
+		intent.putExtra("aspectX", 5);
+		intent.putExtra("aspectY", 4);
+		intent.putExtra("scale", false);
+		intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+		intent.putExtra("return-data", false);
+		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
+		this.startActivityForResult(intent, 100);
+	}
 
-	    
+
+
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		System.out.println("on activity result" + requestCode+" result code"+resultCode);
+		if(data!=null){
+		}
+	}
 }

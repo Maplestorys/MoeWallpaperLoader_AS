@@ -111,7 +111,7 @@ containing a value of this type.
         public static final int sing_icon=0x7f02001b;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0033;
+        public static final int action_settings=0x7f0b0037;
         public static final int b=0x7f0b0013;
         public static final int btn_custom_next=0x7f0b0030;
         public static final int btn_custom_play=0x7f0b002f;
@@ -126,6 +126,7 @@ containing a value of this type.
         public static final int btn_share=0x7f0b000d;
         public static final int btn_share_view=0x7f0b001b;
         public static final int custom_song_icon=0x7f0b002c;
+        public static final int delete_images=0x7f0b0034;
         public static final int gridview=0x7f0b0000;
         public static final int head_arrowImageView=0x7f0b0024;
         public static final int head_contentLayout=0x7f0b0023;
@@ -146,8 +147,11 @@ containing a value of this type.
         public static final int pull_down_view=0x7f0b0020;
         public static final int pulldown_footer_loading=0x7f0b0022;
         public static final int pulldown_footer_text=0x7f0b0021;
+        public static final int resize_image=0x7f0b0035;
         public static final int search_btn=0x7f0b002b;
         public static final int search_et=0x7f0b002a;
+        public static final int set_wallpaper=0x7f0b0033;
+        public static final int share_image=0x7f0b0036;
         public static final int tag_details=0x7f0b001e;
         public static final int tags_list_view=0x7f0b001f;
         public static final int title_view=0x7f0b0003;
@@ -181,7 +185,8 @@ containing a value of this type.
         public static final int view_custom_button=0x7f03000d;
     }
     public static final class menu {
-        public static final int moe_wallpaper_loader=0x7f0a0000;
+        public static final int main=0x7f0a0000;
+        public static final int moe_wallpaper_loader=0x7f0a0001;
     }
     public static final class string {
         public static final int action_settings=0x7f090000;

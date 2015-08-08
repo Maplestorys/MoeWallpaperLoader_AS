@@ -522,4 +522,6 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 	}
 
 
+
+
 }

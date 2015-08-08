@@ -157,8 +157,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 		imageLoader = ImageLoader.getInstance();
 
 		/** 之前 网上很多代码 都会导致刷新事件 跟 上下文菜单同时弹出 这里做测试。。。已经解决 */
-		mListView
-				.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+		mListView.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 
 					@Override
 					public void onCreateContextMenu(ContextMenu menu, View v,
@@ -608,7 +607,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 								System.out.println("file is exist");
 								Toast.makeText(getActivity(),"图像已存在",Toast.LENGTH_SHORT).show();
 							}else {
-								DownloadManager.Request request = new DownloadManager.Request( Uri.parse(ip.getSample_url()) );
+								DownloadManager.Request request = new DownloadManager.Request( Uri.parse(ip.getJpeg_url()) );
 								MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
 								request.setMimeType(mimeTypeMap.getMimeTypeFromExtension(ip.getSample_url()));
 								request.setDestinationInExternalPublicDir("/WallpapersDownloader/", ip.getId() + ".jpg");
@@ -617,7 +616,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 								DownloadManager downloadManager = (DownloadManager) getActivity().getSystemService(getActivity().DOWNLOAD_SERVICE) ;
 								downloadManager.enqueue( request ) ;
 								Toast.makeText(getActivity(),"开始下载",Toast.LENGTH_SHORT).show();
-								System.out.println("download image with id:" + imageValueStrings.get(position).getId());
+								System.out.println("download image with id:" + imageValueStrings.get(position).getJpeg_url());
 							}
 
 							break;
