@@ -1,21 +1,21 @@
-<font face="times new roman" size="20"  color="black">MoeWallpaperLoader</font><br>
-<font face="times new roman" size="12"  color="black">An android application that can help you download anime images from konachan or yande and change your wallpaper regularly</font><br><br><br><br>
-   Please download the APP in the following link 
-  [点击进入下载界面](http://fir.im/MoeWallpaperLoader)<Tab>
+#####下载动漫壁纸的App，基本功能现已完成，准备重写代码
 <br>
 <br>
-<br><br>
-### basic image preview<br>
+>单击下面链接进入下载界面 <br>
+ [欢迎试用 ](http://fir.im/MoeWallpaperLoader)
+<br>
+<br>
+### 在线图片预览<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/basic%20layout.png)<br>
-### expandable tag list<br>
+### 可伸缩的图片标签<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/expandable%20tag%20list.png)<br>
-### mage searching with tags<br>
+### 通过标签搜索图片<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/image%20searching.png)<br>
-### image filter<br>
+### 图片过滤<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/image%20fliter.png)<br>
-### local image selector<br>
+### 本地图片浏览<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader/blob/master/screen/device-2015-07-26-190813.png)<br>
-### wallpaper change notification <br>
+### 自动更换壁纸通知 <br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader/blob/master/screen/device-2015-07-26-190854.png)<br>
-### after change the wallpaper <br>
+### 更换壁纸后 ~ <br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader/blob/master/screen/device-2015-07-26-190912.png)<br>
