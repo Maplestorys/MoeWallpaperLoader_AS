@@ -52,11 +52,11 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int color=0x7f010000;
+        public static final int color_a=0x7f010000;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int icon=0x7f010001;
+        public static final int icon_a=0x7f010001;
         /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -64,7 +64,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int text=0x7f010002;
+        public static final int text_a=0x7f010002;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -74,7 +74,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int text_size=0x7f010003;
+        public static final int text_size_a=0x7f010003;
     }
     public static final class dimen {
         public static final int activity_horizontal_margin=0x7f070000;
@@ -89,100 +89,110 @@ containing a value of this type.
         public static final int action_share=0x7f020005;
         public static final int action_zoom=0x7f020006;
         public static final int arr=0x7f020007;
-        public static final int btn_next=0x7f020008;
-        public static final int btn_pause=0x7f020009;
-        public static final int btn_play=0x7f02000a;
-        public static final int btn_prev=0x7f02000b;
-        public static final int button_save=0x7f02000c;
-        public static final int ic_empty=0x7f02000d;
-        public static final int ic_error=0x7f02000e;
-        public static final int ic_launcher=0x7f02000f;
-        public static final int ic_menu_post=0x7f020010;
-        public static final int ic_menu_reload=0x7f020011;
-        public static final int ic_menu_share=0x7f020012;
-        public static final int ic_navigation_next=0x7f020013;
-        public static final int ic_stub=0x7f020014;
-        public static final int local=0x7f020015;
-        public static final int more_white=0x7f020016;
-        public static final int net=0x7f020017;
-        public static final int pic_image=0x7f020018;
-        public static final int process=0x7f020019;
-        public static final int search=0x7f02001a;
-        public static final int sing_icon=0x7f02001b;
+        public static final int btn_add=0x7f020008;
+        public static final int btn_back=0x7f020009;
+        public static final int btn_next=0x7f02000a;
+        public static final int btn_pause=0x7f02000b;
+        public static final int btn_play=0x7f02000c;
+        public static final int btn_prev=0x7f02000d;
+        public static final int button_save=0x7f02000e;
+        public static final int ic_empty=0x7f02000f;
+        public static final int ic_error=0x7f020010;
+        public static final int ic_launcher=0x7f020011;
+        public static final int ic_menu_post=0x7f020012;
+        public static final int ic_menu_reload=0x7f020013;
+        public static final int ic_menu_share=0x7f020014;
+        public static final int ic_navigation_next=0x7f020015;
+        public static final int ic_stub=0x7f020016;
+        public static final int icn_1=0x7f020017;
+        public static final int icn_2=0x7f020018;
+        public static final int icn_3=0x7f020019;
+        public static final int icn_4=0x7f02001a;
+        public static final int icn_close=0x7f02001b;
+        public static final int local=0x7f02001c;
+        public static final int more_white=0x7f02001d;
+        public static final int net=0x7f02001e;
+        public static final int pic_image=0x7f02001f;
+        public static final int process=0x7f020020;
+        public static final int search=0x7f020021;
+        public static final int sing_icon=0x7f020022;
     }
     public static final class id {
-        public static final int action_settings=0x7f0b0037;
-        public static final int b=0x7f0b0013;
-        public static final int btn_custom_next=0x7f0b0030;
-        public static final int btn_custom_play=0x7f0b002f;
-        public static final int btn_custom_prev=0x7f0b002e;
-        public static final int btn_cut=0x7f0b000b;
-        public static final int btn_download_view=0x7f0b001a;
-        public static final int btn_load=0x7f0b000c;
-        public static final int btn_more_detail_view=0x7f0b001d;
-        public static final int btn_others=0x7f0b000e;
-        public static final int btn_refresh_view=0x7f0b001c;
-        public static final int btn_save=0x7f0b000a;
-        public static final int btn_share=0x7f0b000d;
-        public static final int btn_share_view=0x7f0b001b;
-        public static final int custom_song_icon=0x7f0b002c;
-        public static final int delete_images=0x7f0b0034;
+        public static final int action_settings=0x7f0b0039;
+        public static final int b=0x7f0b0014;
+        public static final int btn_custom_next=0x7f0b0031;
+        public static final int btn_custom_play=0x7f0b0030;
+        public static final int btn_custom_prev=0x7f0b002f;
+        public static final int btn_cut=0x7f0b000c;
+        public static final int btn_download_view=0x7f0b001b;
+        public static final int btn_load=0x7f0b000d;
+        public static final int btn_more_detail_view=0x7f0b001e;
+        public static final int btn_others=0x7f0b000f;
+        public static final int btn_refresh_view=0x7f0b001d;
+        public static final int btn_save=0x7f0b000b;
+        public static final int btn_share=0x7f0b000e;
+        public static final int btn_share_view=0x7f0b001c;
+        public static final int custom_song_icon=0x7f0b002d;
+        public static final int delete_images=0x7f0b0036;
         public static final int gridview=0x7f0b0000;
-        public static final int head_arrowImageView=0x7f0b0024;
-        public static final int head_contentLayout=0x7f0b0023;
-        public static final int head_lastUpdatedTextView=0x7f0b0027;
-        public static final int head_progressBar=0x7f0b0025;
-        public static final int head_tipsTextView=0x7f0b0026;
-        public static final int id_indicator_one=0x7f0b0006;
-        public static final int id_indicator_two=0x7f0b0007;
-        public static final int id_viewpager=0x7f0b0004;
-        public static final int image=0x7f0b0016;
-        public static final int image_loader=0x7f0b0002;
-        public static final int image_tag_list=0x7f0b0012;
-        public static final int indicator=0x7f0b0005;
-        public static final int listview1=0x7f0b0009;
-        public static final int ll_custom_button=0x7f0b002d;
-        public static final int p1=0x7f0b0014;
-        public static final int preference_btn=0x7f0b0029;
-        public static final int pull_down_view=0x7f0b0020;
-        public static final int pulldown_footer_loading=0x7f0b0022;
-        public static final int pulldown_footer_text=0x7f0b0021;
-        public static final int resize_image=0x7f0b0035;
-        public static final int search_btn=0x7f0b002b;
-        public static final int search_et=0x7f0b002a;
-        public static final int set_wallpaper=0x7f0b0033;
-        public static final int share_image=0x7f0b0036;
-        public static final int tag_details=0x7f0b001e;
-        public static final int tags_list_view=0x7f0b001f;
-        public static final int title_view=0x7f0b0003;
-        public static final int tv1=0x7f0b0015;
-        public static final int tv_custom_song_name=0x7f0b0032;
-        public static final int tv_custom_song_singer=0x7f0b0031;
-        public static final int tv_id=0x7f0b000f;
-        public static final int tv_id_view=0x7f0b0017;
-        public static final int tv_occupy=0x7f0b0001;
-        public static final int tv_resolution_view=0x7f0b0019;
-        public static final int tv_score=0x7f0b0010;
-        public static final int tv_score_view=0x7f0b0018;
-        public static final int tv_single_tag_view=0x7f0b0028;
-        public static final int tv_size=0x7f0b0011;
-        public static final int tvlist=0x7f0b0008;
+        public static final int head_arrowImageView=0x7f0b0025;
+        public static final int head_contentLayout=0x7f0b0024;
+        public static final int head_lastUpdatedTextView=0x7f0b0028;
+        public static final int head_progressBar=0x7f0b0026;
+        public static final int head_tipsTextView=0x7f0b0027;
+        public static final int id_indicator_one=0x7f0b0007;
+        public static final int id_indicator_two=0x7f0b0008;
+        public static final int id_viewPager=0x7f0b0001;
+        public static final int id_viewpager=0x7f0b0005;
+        public static final int image=0x7f0b0017;
+        public static final int image_loader=0x7f0b0003;
+        public static final int image_tag_list=0x7f0b0013;
+        public static final int indicator=0x7f0b0006;
+        public static final int listview1=0x7f0b000a;
+        public static final int ll_custom_button=0x7f0b002e;
+        public static final int p1=0x7f0b0015;
+        public static final int preference_btn=0x7f0b002a;
+        public static final int pull_down_view=0x7f0b0021;
+        public static final int pulldown_footer_loading=0x7f0b0023;
+        public static final int pulldown_footer_text=0x7f0b0022;
+        public static final int resize_image=0x7f0b0037;
+        public static final int search_btn=0x7f0b002c;
+        public static final int search_et=0x7f0b002b;
+        public static final int set_wallpaper=0x7f0b0035;
+        public static final int share_image=0x7f0b0038;
+        public static final int tag_details=0x7f0b001f;
+        public static final int tags_list_view=0x7f0b0020;
+        public static final int title_view=0x7f0b0004;
+        public static final int tv1=0x7f0b0016;
+        public static final int tv_custom_song_name=0x7f0b0033;
+        public static final int tv_custom_song_singer=0x7f0b0032;
+        public static final int tv_id=0x7f0b0010;
+        public static final int tv_id_view=0x7f0b0018;
+        public static final int tv_occupy=0x7f0b0002;
+        public static final int tv_resolution_view=0x7f0b001a;
+        public static final int tv_score=0x7f0b0011;
+        public static final int tv_score_view=0x7f0b0019;
+        public static final int tv_single_tag_view=0x7f0b0029;
+        public static final int tv_size=0x7f0b0012;
+        public static final int tvlist=0x7f0b0009;
+        public static final int view_image=0x7f0b0034;
     }
     public static final class layout {
         public static final int ac_image_grid=0x7f030000;
-        public static final int activity_main=0x7f030001;
-        public static final int activity_moe_wallpaper_loader=0x7f030002;
-        public static final int download_list=0x7f030003;
-        public static final int image_popupwindow=0x7f030004;
-        public static final int ite=0x7f030005;
-        public static final int item_grid_image=0x7f030006;
-        public static final int item_list=0x7f030007;
-        public static final int pull_down=0x7f030008;
-        public static final int pull_down_footer=0x7f030009;
-        public static final int pull_down_head=0x7f03000a;
-        public static final int single_tag_view=0x7f03000b;
-        public static final int titleview=0x7f03000c;
-        public static final int view_custom_button=0x7f03000d;
+        public static final int activity_large_image_view=0x7f030001;
+        public static final int activity_main=0x7f030002;
+        public static final int activity_moe_wallpaper_loader=0x7f030003;
+        public static final int download_list=0x7f030004;
+        public static final int image_popupwindow=0x7f030005;
+        public static final int ite=0x7f030006;
+        public static final int item_grid_image=0x7f030007;
+        public static final int item_list=0x7f030008;
+        public static final int pull_down=0x7f030009;
+        public static final int pull_down_footer=0x7f03000a;
+        public static final int pull_down_head=0x7f03000b;
+        public static final int single_tag_view=0x7f03000c;
+        public static final int titleview=0x7f03000d;
+        public static final int view_custom_button=0x7f03000e;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
@@ -205,7 +215,8 @@ containing a value of this type.
         public static final int pref_filter_title=0x7f09000d;
         public static final int pref_site_title=0x7f09000e;
         public static final int showlrc=0x7f09000f;
-        public static final int title_activity_settings=0x7f090010;
+        public static final int title_activity_large_image_view=0x7f090010;
+        public static final int title_activity_settings=0x7f090011;
     }
     public static final class style {
         /**  API 11 theme customizations can go here. 
@@ -236,21 +247,21 @@ containing a value of this type.
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ChangeColorIconView_color com.maplestory.moewallpaperloader:color}</code></td><td></td></tr>
-           <tr><td><code>{@link #ChangeColorIconView_icon com.maplestory.moewallpaperloader:icon}</code></td><td></td></tr>
-           <tr><td><code>{@link #ChangeColorIconView_text com.maplestory.moewallpaperloader:text}</code></td><td></td></tr>
-           <tr><td><code>{@link #ChangeColorIconView_text_size com.maplestory.moewallpaperloader:text_size}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChangeColorIconView_color_a com.maplestory.moewallpaperloader:color_a}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChangeColorIconView_icon_a com.maplestory.moewallpaperloader:icon_a}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChangeColorIconView_text_a com.maplestory.moewallpaperloader:text_a}</code></td><td></td></tr>
+           <tr><td><code>{@link #ChangeColorIconView_text_size_a com.maplestory.moewallpaperloader:text_size_a}</code></td><td></td></tr>
            </table>
-           @see #ChangeColorIconView_color
-           @see #ChangeColorIconView_icon
-           @see #ChangeColorIconView_text
-           @see #ChangeColorIconView_text_size
+           @see #ChangeColorIconView_color_a
+           @see #ChangeColorIconView_icon_a
+           @see #ChangeColorIconView_text_a
+           @see #ChangeColorIconView_text_size_a
          */
         public static final int[] ChangeColorIconView = {
             0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003
         };
         /**
-          <p>This symbol is the offset where the {@link com.maplestory.moewallpaperloader.R.attr#color}
+          <p>This symbol is the offset where the {@link com.maplestory.moewallpaperloader.R.attr#color_a}
           attribute's value can be found in the {@link #ChangeColorIconView} array.
 
 
@@ -261,21 +272,21 @@ containing a value of this type.
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.maplestory.moewallpaperloader:color
+          @attr name com.maplestory.moewallpaperloader:color_a
         */
-        public static final int ChangeColorIconView_color = 0;
+        public static final int ChangeColorIconView_color_a = 0;
         /**
-          <p>This symbol is the offset where the {@link com.maplestory.moewallpaperloader.R.attr#icon}
+          <p>This symbol is the offset where the {@link com.maplestory.moewallpaperloader.R.attr#icon_a}
           attribute's value can be found in the {@link #ChangeColorIconView} array.
 
 
           <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.maplestory.moewallpaperloader:icon
+          @attr name com.maplestory.moewallpaperloader:icon_a
         */
-        public static final int ChangeColorIconView_icon = 1;
+        public static final int ChangeColorIconView_icon_a = 1;
         /**
-          <p>This symbol is the offset where the {@link com.maplestory.moewallpaperloader.R.attr#text}
+          <p>This symbol is the offset where the {@link com.maplestory.moewallpaperloader.R.attr#text_a}
           attribute's value can be found in the {@link #ChangeColorIconView} array.
 
 
@@ -285,11 +296,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.maplestory.moewallpaperloader:text
+          @attr name com.maplestory.moewallpaperloader:text_a
         */
-        public static final int ChangeColorIconView_text = 2;
+        public static final int ChangeColorIconView_text_a = 2;
         /**
-          <p>This symbol is the offset where the {@link com.maplestory.moewallpaperloader.R.attr#text_size}
+          <p>This symbol is the offset where the {@link com.maplestory.moewallpaperloader.R.attr#text_size_a}
           attribute's value can be found in the {@link #ChangeColorIconView} array.
 
 
@@ -301,8 +312,8 @@ in (inches), mm (millimeters).
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
-          @attr name com.maplestory.moewallpaperloader:text_size
+          @attr name com.maplestory.moewallpaperloader:text_size_a
         */
-        public static final int ChangeColorIconView_text_size = 3;
+        public static final int ChangeColorIconView_text_size_a = 3;
     };
 }

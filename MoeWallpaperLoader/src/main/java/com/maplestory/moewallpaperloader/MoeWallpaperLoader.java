@@ -66,6 +66,8 @@ import android.widget.Button;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import org.apache.http.conn.scheme.HostNameResolver;
+
 public class MoeWallpaperLoader extends FragmentActivity implements OnPageChangeListener,OnClickListener,searchCallback {
 	private  WallpaperManager wallpaperManager ;
 	private ViewPager mViewPager;  
@@ -102,6 +104,7 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 	private String tags="";
 	private Handler FragmentUIHandler = null;
 	private Handler imagePreviewHandler = null;
+	private Handler mainActivityHandler;
 	public void setImagePreviewHandler(Handler handler)
 	{
 		this.imagePreviewHandler = handler;
@@ -210,7 +213,10 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 			}
 		};
 		titleView.setOnKeyListener(keyListener);
+
     }
+
+
 
 	@Override
 	protected void onResume() {
@@ -223,6 +229,16 @@ public class MoeWallpaperLoader extends FragmentActivity implements OnPageChange
 		}else {
 			mNotificationManager.cancelAll();
 		}
+
+		mainActivityHandler= new Handler(){
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				titleView.setEditTextValue(tags);
+			}
+		};
+
+		((ImgPreviewFragment)imgPreview ).setMainActivityHandler(mainActivityHandler);
 	}
 
 	private void initDatas()

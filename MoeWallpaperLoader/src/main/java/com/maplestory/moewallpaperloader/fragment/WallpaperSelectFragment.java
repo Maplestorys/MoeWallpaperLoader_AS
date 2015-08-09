@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.maplestory.moewallpaperloader.LargeImageView;
 import com.maplestory.moewallpaperloader.MoeWallpaperLoader;
 import com.maplestory.moewallpaperloader.view.PopupMenuCompat;
 import com.maplestory.moewallpaperloader.R;
@@ -32,6 +33,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
@@ -66,9 +68,6 @@ public class WallpaperSelectFragment extends Fragment{
 		 images = new ArrayList();
 		 imagePaths = new ArrayList();
 		 options = new DisplayImageOptions.Builder()
-			.showStubImage(R.drawable.ic_stub)
-			.showImageForEmptyUri(R.drawable.ic_empty)
-			.showImageOnFail(R.drawable.ic_error)
 			.cacheInMemory(false)
 			.cacheOnDisc(false)
 			.bitmapConfig(Bitmap.Config.RGB_565)	 //设置图片的解码类型
@@ -113,7 +112,8 @@ public class WallpaperSelectFragment extends Fragment{
 		listView.setOnItemClickListener(new OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,final int position, long id) {
-				
+
+
 /*				final WallpaperManager wallpaperManager = WallpaperManager.getInstance(getActivity());
 				Drawable wallpaperDrawable = wallpaperManager.getDrawable();
 				final Bitmap previousWallpaper = ((BitmapDrawable) wallpaperDrawable).getBitmap();
@@ -161,7 +161,6 @@ public class WallpaperSelectFragment extends Fragment{
 						switch (item.getItemId()){
 							case(R.id.set_wallpaper):
 								final WallpaperManager wallpaperManager = WallpaperManager.getInstance(getActivity());
-								Drawable wallpaperDrawable = wallpaperManager.getDrawable();
 								Bitmap nextWallpaper = BitmapFactory.decodeFile(imagePaths.get(position));
 								try {
 									wallpaperManager.setBitmap(nextWallpaper);
@@ -208,6 +207,12 @@ public class WallpaperSelectFragment extends Fragment{
 								break;
 							case(R.id.resize_image):
 								cropImageUri(uri,1);
+								break;
+							case (R.id.view_image):
+								Intent intenta = new Intent(getActivity(),LargeImageView.class);
+								intenta.putExtra("position",position);
+								intenta.putExtra("imagePaths",imageUrls);
+								startActivity(intenta);
 								break;
 						}
 						return true;
@@ -316,12 +321,17 @@ public class WallpaperSelectFragment extends Fragment{
 	    }
 
 	private void cropImageUri(Uri uri, int requestCode){
+		WindowManager wm = (WindowManager) getActivity()
+				.getSystemService(Context.WINDOW_SERVICE);
+		int height = wm.getDefaultDisplay().getHeight();
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(uri, "image/*");
 		intent.putExtra("crop", "true");
-		intent.putExtra("aspectX", 5);
-		intent.putExtra("aspectY", 4);
+		intent.putExtra("aspectX",14);
+		intent.putExtra("aspectY",16);
 		intent.putExtra("scale", false);
+		intent.putExtra("outputX", height*1.25);// 输出图片大小
+		intent.putExtra("outputY", height);
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 		intent.putExtra("return-data", false);
 		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
@@ -334,7 +344,13 @@ public class WallpaperSelectFragment extends Fragment{
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		System.out.println("on activity result" + requestCode+" result code"+resultCode);
-		if(data!=null){
-		}
+
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		imageLoader.clearMemoryCache();
+		imageLoader.clearDiscCache();
 	}
 }

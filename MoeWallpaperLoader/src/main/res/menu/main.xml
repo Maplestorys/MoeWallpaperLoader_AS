@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:title="浏览大图"
+		android:id="@+id/view_image"/>
+
 	<item android:title="设为壁纸"
 		  android:id="@+id/set_wallpaper" />
 
@@ -12,4 +15,6 @@
 
 	<item android:title="分享图片"
 		android:id="@+id/share_image" />
+
+
 </menu>

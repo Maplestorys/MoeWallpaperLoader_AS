@@ -34,9 +34,9 @@
             android:layout_weight="1"
             android:padding="5dp"
 
-            zhy:icon="@drawable/net"
-            zhy:text="在线预览"
-            zhy:text_size="14sp" />
+            zhy:icon_a="@drawable/net"
+            zhy:text_a="在线预览"
+            zhy:text_size_a="14sp" />
         <com.maplestory.moewallpaperloader.view.ChangeColorIconWithTextView
             android:id="@+id/id_indicator_two"
             android:layout_width="wrap_content"
@@ -44,9 +44,9 @@
             android:layout_weight="1"
             android:padding="5dp"
 
-            zhy:icon="@drawable/local"
-            zhy:text="本地图库"
-            zhy:text_size="14sp" />
+            zhy:icon_a="@drawable/local"
+            zhy:text_a="本地图库"
+            zhy:text_size_a="14sp" />
 
         
  

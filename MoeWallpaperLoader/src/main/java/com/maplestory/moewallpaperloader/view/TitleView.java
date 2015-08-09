@@ -49,5 +49,8 @@ public class TitleView extends RelativeLayout  {
 	public String getEditTextValue() {
 		return searchText.getText().toString();
 	}
-	
+
+	public void setEditTextValue(String tag) {
+		searchText.setText(tag);
+	}
 }

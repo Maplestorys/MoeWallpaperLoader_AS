@@ -53,6 +53,8 @@ import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
+import org.apache.http.conn.scheme.HostNameResolver;
+
 public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 		OnItemClickListener {
 
@@ -89,6 +91,13 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 	private String filterSortMethod;
 	private String siteAddress;
 	private Boolean isFilterExplicit;
+	private Handler mainActivityHandler;
+	public void setMainActivityHandler(Handler handler){
+		this.mainActivityHandler = handler;
+	}
+
+
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -614,7 +623,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 								request.allowScanningByMediaScanner() ;
 								request.setVisibleInDownloadsUi(true) ;
 								DownloadManager downloadManager = (DownloadManager) getActivity().getSystemService(getActivity().DOWNLOAD_SERVICE) ;
-								downloadManager.enqueue( request ) ;
+								downloadManager.enqueue(request) ;
 								Toast.makeText(getActivity(),"开始下载",Toast.LENGTH_SHORT).show();
 								System.out.println("download image with id:" + imageValueStrings.get(position).getJpeg_url());
 							}
@@ -647,6 +656,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 					String selectedTag = imageValueStrings.get(position).getTags().get(innerPosition);
 					((MoeWallpaperLoader) getActivity()).setTags(selectedTag);
 					loadDataHandler.sendEmptyMessage(0);
+					mainActivityHandler.sendEmptyMessage(0);
 					System.out.println(selectedTag);
 				}
 			});

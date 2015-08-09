@@ -72,11 +72,11 @@
     </string-array>
     <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/attrs.xml -->
     <eat-comment/>
-    <attr format="color" name="color"/>
-    <attr format="reference" name="icon"/>
-    <attr format="string" name="text"/>
-    <attr format="dimension" name="text_size"/>
-    <declare-styleable name="ChangeColorIconView"><attr name="icon"/><attr name="color"/><attr name="text"/><attr name="text_size"/></declare-styleable>
+    <attr format="color" name="color_a"/>
+    <attr format="reference" name="icon_a"/>
+    <attr format="string" name="text_a"/>
+    <attr format="dimension" name="text_size_a"/>
+    <declare-styleable name="ChangeColorIconView"><attr name="icon_a"/><attr name="color_a"/><attr name="text_a"/><attr name="text_size_a"/></declare-styleable>
     <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -103,6 +103,7 @@
     <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="showlrc">Wallpaper</string>
+    <string name="title_activity_large_image_view">LargeImageView</string>
     <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/strings_activity_settings.xml -->
     <eat-comment/>
     <string name="title_activity_settings">Settings</string>

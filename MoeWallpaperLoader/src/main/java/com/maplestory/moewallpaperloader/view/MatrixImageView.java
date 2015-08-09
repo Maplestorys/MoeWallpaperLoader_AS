@@ -36,9 +36,8 @@ public class MatrixImageView extends ImageView{
     public void setOuterHandler(Handler mHandler) {
     	this.updateOuterUI = mHandler;
     }
-
-    public MatrixImageView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public MatrixImageView(Context context) {
+        super(context);
         MatrixTouchListener mListener=new MatrixTouchListener();
         setOnTouchListener(mListener);
         mGestureDetector=new GestureDetector(getContext(), new GestureListener(mListener));
