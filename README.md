@@ -1,22 +1,21 @@
-# MoeWallpaperLoader
-<font face="times new roman" size="20"  color="black">MoeWallpaperLoader</font><br>
-<font face="times new roman" size="12"  color="black">An android application that can help you download anime images from konachan or yande and change your wallpaper regularly</font><br>
-Please download the APP in the following link  <br>
-https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/MoeWallpaperLoader/build/outputs/apk/MoeWallpaperLoader-debug.apk
+#####下载动漫壁纸的App，基本功能现已完成，准备重写代码
 <br>
 <br>
+  单击下面链接进入下载界面 <br>
+  [欢迎试用 ](http://fir.im/MoeWallpaperLoader)
 <br>
- <font face="times new roman" size="26"  color="black">basic image preview layout</font><br>
+<br>
+### 在线图片预览<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/basic%20layout.png)<br>
-<font face="times new roman" size="26"  color="black">expandable tag list </font><br>
+### 可伸缩的图片标签<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/expandable%20tag%20list.png)<br>
-<font face="times new roman" size="26"  color="black">image searching with tags</font><br>
+### 通过标签搜索图片<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/image%20searching.png)<br>
-<font face="times new roman" size="26"  color="black">image filter</font><br>
+### 图片过滤<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader_AS/blob/master/shotcut/image%20fliter.png)<br>
- <font face="times new roman" size="26"  color="black">local image selector</font><br>
+### 本地图片浏览<br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader/blob/master/screen/device-2015-07-26-190813.png)<br>
-<font face="times new roman" size="26"  color="black">wallpaper change notification </font><br>
+### 自动更换壁纸通知 <br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader/blob/master/screen/device-2015-07-26-190854.png)<br>
-<font face="times new roman" size="26"  color="black">after change the wallpaper</font><br>
+### 更换壁纸后 ~ <br>
 ![image](https://github.com/Maplestorys/MoeWallpaperLoader/blob/master/screen/device-2015-07-26-190912.png)<br>
