@@ -2,39 +2,11 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\exploded-aar\com.yalantis\contextmenu\1.0.4\jars\classes.jar"
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\fluent-hc-4.5.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="4812670dcffa70f6e3b2dc5f191837a2db7d4cd9">
-        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\classes-0dae0f763abe0fa557aa62a78ec1d08850ccaa7e.jar" />
-    </item>
-    <item
-        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\libs\internal_impl-21.0.3.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\internal_impl-21.0.3-785601dafdfcf94782a1fd300c5a386be50e8202.jar" />
-    </item>
-    <item
-        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
-        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\classes-d813627df4d01ce6307f6501cd67dd63f3ad69b1.jar" />
-    </item>
-    <item
-        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\universal-image-loader-1.8.6-with-sources.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="9ad605dd55be2e74e614b2ab2ff466439c4461b7">
-        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\universal-image-loader-1.8.6-with-sources-d4064ff278d552d548d72b4b104fc890de9ad1fd.jar" />
-    </item>
-    <item
-        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\jars\classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
-        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\classes-237eac3dfd8993f54eb43d125951f216f397a459.jar" />
+        sha1="6b83009428e935d37c2312b780de64b67f9131a5">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\fluent-hc-4.5-2ed2c83d769f186f7d8b981a9ab742f7685a373e.jar" />
     </item>
     <item
         jar="C:\Users\智\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
@@ -44,6 +16,34 @@
         <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\library-2.4.0-3d8854a1af7a5b2256f19a00bf3cbf9c4556e1af.jar" />
     </item>
     <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\commons-codec-1.9.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9ce04e34240f674bc72680f8b843b1457383161a">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\commons-codec-1.9-75764b379d0eb2b0cb4d1c81595189d1846796b4.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\httpclient-win-4.5.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="2f384c9c8ed771664b135cdb593e2235e4ea3524">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\httpclient-win-4.5-89951ee601d2bac00e08389fad181ee948eca868.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\universal-image-loader-1.8.6-with-sources.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="9ad605dd55be2e74e614b2ab2ff466439c4461b7">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\universal-image-loader-1.8.6-with-sources-d4064ff278d552d548d72b4b104fc890de9ad1fd.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\jna-platform-4.1.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="23457ad1cf75c2c16763330de5565a0e67b4bc0a">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\jna-platform-4.1.0-98589fe4c7e1dd244d318d345f69c1b2fbc32179.jar" />
+    </item>
+    <item
         jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\android-support-v4.jar"
         jumboMode="false"
         revision="22.0.1"
@@ -51,11 +51,53 @@
         <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\android-support-v4-defca4c0b81a6e8c0d252b47684e2a035c6961a9.jar" />
     </item>
     <item
-        jar="D:\Android\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\jna-4.1.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\support-annotations-21.0.3-df9358aebbc94b487d3334b0b755776a6fd6d790.jar" />
+        sha1="1c12d070e602efd8021891cdd7fd18bc129372d4">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\jna-4.1.0-ed760b4e6e9f5e56cf66884bd833349ca21bd215.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\httpclient-cache-4.5.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="dd8704e3cf3e56c4fc135d5a5e02970d521ccf80">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\httpclient-cache-4.5-a36aca559350c658d16e164cece0fd126046b103.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\jsoup-1.8.2-sources.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6d9261f632b786bc1f40cf57cb31488c629c7bae">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\jsoup-1.8.2-sources-fcbd1ec17d3107a9c949702b7563896e08a9beb7.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\httpmime-4.5.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="7bdb321e86724b16af6134a0fd22fec649eda971">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\httpmime-4.5-990a01c2b70213eba30f50b9d860b4ea32f49363.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\commons-logging-1.2.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4bfc12adfe4842bf07b657f0369c4cb522955686">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\commons-logging-1.2-a06c77d6ec5d08ba388965e0702a179e0ac80da2.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\httpclient-4.5.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a1e6cbb3cc2c5f210dd1310ff9fcb2c09c0d1438">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\httpclient-4.5-203bd530cd39fc406371a63c7c86b92a1c3a35a5.jar" />
+    </item>
+    <item
+        jar="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\libs\httpcore-4.4.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f5aa318bda4c6c8d688c9d00b90681dcd82ce636">
+        <dex dex="C:\Users\智\StudioProjects\MoeWallpaperLoader\MoeWallpaperLoader\build\intermediates\pre-dexed\debug\httpcore-4.4.1-a0f0379c148d234dcead5fa6a975d295f4e9b745.jar" />
     </item>
 
 </items>

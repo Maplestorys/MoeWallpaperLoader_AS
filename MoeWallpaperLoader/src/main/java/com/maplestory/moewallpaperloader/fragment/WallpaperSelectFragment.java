@@ -21,6 +21,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -321,21 +322,24 @@ public class WallpaperSelectFragment extends Fragment{
 	    }
 
 	private void cropImageUri(Uri uri, int requestCode){
-		WindowManager wm = (WindowManager) getActivity()
-				.getSystemService(Context.WINDOW_SERVICE);
-		int height = wm.getDefaultDisplay().getHeight();
+		File f = new File("/sdcard/WallpapersDownloader/temp.jpg");
+		try {
+			f.createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		Uri output = Uri.parse("file:///mnt/sdcard/WallpapersDownloader/temp.jpg");
 		Intent intent = new Intent("com.android.camera.action.CROP");
 		intent.setDataAndType(uri, "image/*");
 		intent.putExtra("crop", "true");
-		intent.putExtra("aspectX",14);
-		intent.putExtra("aspectY",16);
+		intent.putExtra("aspectX",6);
+		intent.putExtra("aspectY",5);
 		intent.putExtra("scale", false);
-		intent.putExtra("outputX", height*1.25);// 输出图片大小
-		intent.putExtra("outputY", height);
-		intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+		intent.putExtra(MediaStore.EXTRA_OUTPUT, output);
 		intent.putExtra("return-data", false);
 		intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-		this.startActivityForResult(intent, 100);
+		this.startActivityForResult(intent, 1);
+
 	}
 
 
@@ -343,14 +347,55 @@ public class WallpaperSelectFragment extends Fragment{
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		System.out.println("on activity result" + requestCode+" result code"+resultCode);
+		if(resultCode!=0){
+			WindowManager wm = (WindowManager) getActivity()
+					.getSystemService(Context.WINDOW_SERVICE);
+			int height = wm.getDefaultDisplay().getHeight();
+			System.out.println("on activity result" + requestCode+" result code"+resultCode);
+			Bitmap bitmap = BitmapFactory.decodeFile("/sdcard/WallpapersDownloader/temp.jpg");
+			Bitmap drawable = resizeImage(bitmap, (int) (1.2 * height), height);
+			final WallpaperManager wallpaperManager = WallpaperManager.getInstance(getActivity());
+			try {
+				wallpaperManager.setBitmap(drawable);
+				Toast.makeText(getActivity(), "设置成功", Toast.LENGTH_SHORT).show();}
+			catch (IOException e){
+				e.printStackTrace();
+			}
+			drawable.recycle();
+			bitmap.recycle();
+			bitmap = null;
+			drawable = null;
+			File deleteImage = new File("/sdcard/WallpapersDownloader/temp.jpg");
+			deleteImage.delete();
+		}
 
 	}
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		imageLoader.clearMemoryCache();
-		imageLoader.clearDiscCache();
 	}
+
+
+	public static Bitmap resizeImage(Bitmap bitmap, int w, int h)
+	{
+		Bitmap BitmapOrg = bitmap;
+		int width = BitmapOrg.getWidth();
+		int height = BitmapOrg.getHeight();
+		int newWidth = w;
+		int newHeight = h;
+		System.out.println(width+"wwww"+height+"hhhh");
+		System.out.println(newWidth+"nwwww"+newHeight+"nhhhh");
+		float scaleWidth = ((float) newWidth) / width;
+		float scaleHeight = ((float) newHeight) / height;
+
+		Matrix matrix = new Matrix();
+		matrix.postScale(scaleWidth, scaleHeight);
+		// if you want to rotate the Bitmap
+		// matrix.postRotate(45);
+		Bitmap resizedBitmap = Bitmap.createBitmap(BitmapOrg, 0, 0, width,
+				height, matrix, true);
+		return resizedBitmap;
+	}
+
 }

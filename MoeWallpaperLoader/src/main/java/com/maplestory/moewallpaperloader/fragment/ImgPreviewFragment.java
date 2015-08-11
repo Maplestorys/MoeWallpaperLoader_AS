@@ -95,7 +95,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 	public void setMainActivityHandler(Handler handler){
 		this.mainActivityHandler = handler;
 	}
-
+	private HttpUtils httpUtils = new HttpUtils();
 
 
 	@Override
@@ -222,7 +222,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				//	String withTagsHtmlString = siteAddressGen.getSiteAddress(currentPage, tags);
 				    String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress,currentPage,isFilterExplicit,tags,filterSize,filterScore,filterSortMethod);
 					System.out.println(withTagsHtmlString);
-					String htmlString = HttpUtils
+					String htmlString = httpUtils
 							.getContent(withTagsHtmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
@@ -230,7 +230,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				//	String htmlString = HttpUtils.getContent(siteAddressGen.getSiteAddress(currentPage));
 					String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,"", filterSize, filterScore, filterSortMethod);
 					System.out.println(withTagsHtmlString);
-					String htmlString = HttpUtils.getContent(withTagsHtmlString);
+					String htmlString = httpUtils.getContent(withTagsHtmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 				}
@@ -279,14 +279,14 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 						//System.out.println(withTagsHtmlString);
 						String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,tags, filterSize, filterScore, filterSortMethod);
 						System.out.println(withTagsHtmlString);
-						String htmlString = HttpUtils
+						String htmlString = httpUtils
 								.getContent(withTagsHtmlString);
 						al = HttpUtils.getNewImageValues(htmlString);
 
 					} else {
 						String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,"", filterSize, filterScore, filterSortMethod);
 						System.out.println(withTagsHtmlString);
-						String htmlString = HttpUtils.getContent(withTagsHtmlString);
+						String htmlString = httpUtils.getContent(withTagsHtmlString);
 						al = HttpUtils.getNewImageValues(htmlString);
 					}
 					if (al.size() > 0) {
@@ -296,12 +296,14 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 						imageValueStrings.addAll(al);
 						currentPage++;
 						mPullDownView.notifyDidMore();
+						System.out.println("notifyMore");
 						Message msg = mUIHandler.obtainMessage(WHAT_DID_MORE);
 						msg.obj = strings;
 						msg.sendToTarget();
 					}
 				} else {
 					mPullDownView.notifyDidMore();
+					System.out.println("notifyMore");
 					Message msg = mUIHandler.obtainMessage(WHAT_DID_MORE);
 					msg.sendToTarget();
 					System.out.println("no more pages");
@@ -417,13 +419,13 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 					if (hasTags) {
 						String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit, tags, filterSize, filterScore, filterSortMethod);
 						System.out.println(withTagsHtmlString);
-						String htmlString = HttpUtils.getContent(withTagsHtmlString);
+						String htmlString = httpUtils.getContent(withTagsHtmlString);
 						al = HttpUtils.getNewImageValues(htmlString);
 						maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 					} else {
 						String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit,"", filterSize, filterScore, filterSortMethod);
 						System.out.println(withTagsHtmlString);
-						String htmlString = HttpUtils.getContent(withTagsHtmlString);
+						String htmlString = httpUtils.getContent(withTagsHtmlString);
 						al = HttpUtils.getNewImageValues(htmlString);
 						maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 					}
@@ -470,7 +472,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				if (hasTags) {
 					String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit, tags, filterSize, filterScore, filterSortMethod);
 					System.out.println(withTagsHtmlString);
-					String htmlString = HttpUtils
+					String htmlString = httpUtils
 							.getContent(withTagsHtmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
@@ -479,7 +481,7 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				} else {
 					String withTagsHtmlString = siteAddressGen.getsiteAddress(siteAddress, currentPage, isFilterExplicit, "", filterSize, filterScore, filterSortMethod);
 					System.out.println(withTagsHtmlString);
-					String htmlString = HttpUtils.getContent(withTagsHtmlString);
+					String htmlString = httpUtils.getContent(withTagsHtmlString);
 					al = HttpUtils.getNewImageValues(htmlString);
 					maxPageNumber = HttpUtils.getMaxPageNumber(htmlString);
 				}

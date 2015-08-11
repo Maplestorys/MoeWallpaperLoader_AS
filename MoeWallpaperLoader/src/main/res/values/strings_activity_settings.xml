@@ -5,18 +5,13 @@
 
     <string name="pref_site_title">Site</string>
     <string-array name="pref_site_list_titles">
-        <item>Konachan0</item>
-        <item>Konachan1</item>
-        <item>Konachan2</item>
-        <item>Konachan3</item>
-        <item>Konachan4</item>
+        <item>konachan.com</item>
+        <item>yande.re</item>
+
     </string-array>
     <string-array name="pref_site_list_values">
         <item>http://konachan.com/post?</item>
-        <item>http://konachan.com/post?</item>
-        <item>http://konachan.com/post?</item>
-        <item>http://konachan.com/post?</item>
-        <item>http://konachan.com/post?</item>
+        <item>https://yande.re/post?</item>
     </string-array>
 
     <string name="pref_filter_title">Filter</string>
