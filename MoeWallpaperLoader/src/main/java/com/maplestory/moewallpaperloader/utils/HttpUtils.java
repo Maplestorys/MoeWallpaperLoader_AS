@@ -218,11 +218,14 @@ public class HttpUtils {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		HttpEntity entity = response.getEntity();
-		try {
-			returnString =  EntityUtils.toString(entity);
-		} catch (IOException e) {
-			e.printStackTrace();
+		HttpEntity entity;
+		if (response != null) {
+			entity = response.getEntity();
+			try {
+				returnString = EntityUtils.toString(entity);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 		return returnString;
 	}

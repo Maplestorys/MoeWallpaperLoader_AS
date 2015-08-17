@@ -99,6 +99,7 @@
     <eat-comment/>
     <string name="showlrc">Wallpaper</string>
     <string name="title_activity_large_image_view">LargeImageView</string>
+    <string name="title_activity_launcher">MoeLoader</string>
     <!-- From: file:/C:/Users/智/StudioProjects/MoeWallpaperLoader/MoeWallpaperLoader/src/main/res/values/strings_activity_settings.xml -->
     <eat-comment/>
     <string name="title_activity_settings">Settings</string>

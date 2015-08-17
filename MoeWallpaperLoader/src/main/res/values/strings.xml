@@ -9,4 +9,5 @@
 	<string name="showlrc">Wallpaper</string>
 	<string name="info">Preference</string>
     <string name="title_activity_large_image_view">LargeImageView</string>
+    <string name="title_activity_launcher">MoeLoader</string>
 </resources>
