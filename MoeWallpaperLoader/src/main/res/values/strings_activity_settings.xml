@@ -5,12 +5,12 @@
 
     <string name="pref_site_title">Site</string>
     <string-array name="pref_site_list_titles">
-        <item>konachan.com</item>
+        <item>konachan.net</item>
         <item>yande.re</item>
 
     </string-array>
     <string-array name="pref_site_list_values">
-        <item>http://konachan.com/post?</item>
+        <item>http://konachan.net/post?</item>
         <item>https://yande.re/post?</item>
     </string-array>
 

@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 	<com.maplestory.moewallpaperloader.view.TitleView 
     	android:layout_width="fill_parent"
-    	android:layout_height="40dip"
+    	android:layout_height="50dip"
     	android:layout_alignParentTop="true"
     	android:id="@+id/title_view">
 	</com.maplestory.moewallpaperloader.view.TitleView>

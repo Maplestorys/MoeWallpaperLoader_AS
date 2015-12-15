@@ -64,6 +64,7 @@
             android:label="@string/title_activity_launcher" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.maplestory.moewallpaperloader.LauncherActivity"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -1,6 +1,7 @@
 package com.maplestory.moewallpaperloader.fragment;
 
 import android.app.DownloadManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
@@ -41,6 +42,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +53,8 @@ import com.maplestory.moewallpaperloader.view.PullDownView;
 import com.maplestory.moewallpaperloader.view.PullDownView.OnPullDownListener;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 
 import org.apache.http.conn.scheme.HostNameResolver;
@@ -668,10 +672,10 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 				@Override
 				public void onClick(View v) {
 
-					if(imageDetails.getVisibility()==View.GONE){
+					if (imageDetails.getVisibility() == View.GONE) {
 						imageDetails.setVisibility(View.VISIBLE);
 						btnActionDetail.startAnimation(a);
-					}else {
+					} else {
 						imageDetails.setVisibility(View.GONE);
 						btnActionDetail.startAnimation(b);
 					}
@@ -681,6 +685,8 @@ public class ImgPreviewFragment extends Fragment implements OnPullDownListener,
 			});
 			holder.tvId.setText("" + imageValueStrings.get(position).getId());
 			imageLoader.displayImage(imageUrls[position], holder.image, options);
+
+
 			holder.tvResolution.setText("" + imageValueStrings.get(position).getJpeg_width() + "×" + imageValueStrings.get(position).getJpeg_height());
 			holder.tvScore.setText(imageValueStrings.get(position).getScore() + "");
 			holder.lvTags.setAdapter(new ArrayAdapter<String>(getActivity(),R.layout.single_tag_view,imageValueStrings.get(position).getTags()));

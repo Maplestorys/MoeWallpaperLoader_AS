@@ -7,7 +7,7 @@ public class siteAddressGen {
 		// TODO Auto-generated constructor stub
 	}
 //	private static final String siteBaseAddress = "https://yande.re/post?";
-	private static final String siteBaseAddress = "http://konachan.com/post?";
+	private static final String siteBaseAddress = "http://konachan.net/post?";
 	private static final String sitePageAddress = "page=";
 	private static final String siteTagAddress = "&tags=rating:s";
 //	private static final String siteTagAddress = "&tags=";

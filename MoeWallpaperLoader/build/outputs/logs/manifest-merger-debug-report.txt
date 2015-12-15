@@ -127,13 +127,17 @@ ADDED from AndroidManifest.xml:62:9
 		ADDED from AndroidManifest.xml:64:13
 	android:name
 		ADDED from AndroidManifest.xml:63:13
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER+com.maplestory.moewallpaperloader.LauncherActivity
 ADDED from AndroidManifest.xml:65:13
 action#android.intent.action.MAIN
 ADDED from AndroidManifest.xml:66:17
 	android:name
 		ADDED from AndroidManifest.xml:66:25
-category#android.intent.category.LAUNCHER
+action#com.maplestory.moewallpaperloader.LauncherActivity
 ADDED from AndroidManifest.xml:67:17
 	android:name
-		ADDED from AndroidManifest.xml:67:27
+		ADDED from AndroidManifest.xml:67:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:68:17
+	android:name
+		ADDED from AndroidManifest.xml:68:27

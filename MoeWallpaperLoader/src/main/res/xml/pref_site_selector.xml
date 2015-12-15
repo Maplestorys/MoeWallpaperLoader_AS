@@ -4,7 +4,7 @@
     <ListPreference
         android:key="image_site_list"
         android:title="@string/pref_site_title"
-        android:defaultValue="http://konachan.com/post?"
+        android:defaultValue="http://konachan.net/post?"
         android:entries="@array/pref_site_list_titles"
         android:entryValues="@array/pref_site_list_values"
         android:negativeButtonText="@null"
